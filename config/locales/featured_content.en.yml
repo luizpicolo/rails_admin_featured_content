@@ -1,0 +1,7 @@
+en:
+  admin:
+    actions:
+      featured_content:
+        title: "Create Featured Content"
+        menu: "Create Featured Content"
+        breadcrumb: "Create Featured Content"

@@ -1,0 +1,7 @@
+pt-BR:
+  admin:
+    actions:
+      featured_content:
+        title: "Criar Destaque"
+        menu: "Criar Destaque"
+        breadcrumb: "Criar Destaque"
