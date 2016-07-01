@@ -1,7 +1,25 @@
 <%= stylesheet_link_tag 'rails_admin/featured_content' %>
 <%= javascript_include_tag 'rails_admin/featured_content'  %>
 
+<div class="snippet">
+  <%= link_to '#', class: 'snippet__btn', data: {snippet: '1'} do %>
+    <%= image_tag 'snippet-text.jpg', class: 'snippet__image' %>
+  <% end %>
 
-<%= simple_form_for rails_admin.featured_content_url(@abstract_model.to_param, id: @object.id), remote: false do |f| %>
-  <!-- form here -->
+  <%= link_to '#', class: 'snippet__btn', data: {snippet: '2'} do %>
+    <%= image_tag 'snippet-text.jpg', class: 'snippet__image' %>
+  <% end %>
+
+  <%= link_to '#', class: 'snippet__btn', data: {snippet: '3'} do %>
+    <%= image_tag 'snippet-text.jpg', class: 'snippet__image' %>
+  <% end %>
+</div>
+
+<%= simple_form_for rails_admin.content_builder_url(@abstract_model.to_param, id: @object.id), html: { class: 'form' }, remote: false do |f| %>
+  <div class="controls">
+    <%= f.button :submit, 'Salvar', name: 'save', class: 'btn btn-block btn-primary' %>
+    <%= f.button :submit, 'Publicar', name: 'publish', class: 'btn btn-block btn-success' %>
+  </div>
+
+  <div class="featured__container"></div>
 <% end %>

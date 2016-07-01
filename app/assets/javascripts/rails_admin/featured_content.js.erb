@@ -1,1 +1,131 @@
-// JS Files
+// when rails admin ready
+$(document).on('rails_admin.dom_ready', function() {
+  $('.featured__container').sortable({
+    revert: true,
+    placeholder: 'ui-sortable-placeholder',
+    handle: '.tools__btn--move',
+    cursor: 'move',
+  });
+
+  editable();
+});
+
+// when click on tools buttons
+$(document).on('click', '.tools__btn', function(e) {
+  e.preventDefault();
+});
+
+// when click on delete button
+$(document).on('click', '.tools__btn--delete', function() {
+  var resp = confirm('<%= I18n.t('ad$(min.actions.news_admin.delete_block')%>');
+
+  if(resp) {
+    $($(this).attr('href')).remove();
+  }
+});
+
+// when click on snippet buttons
+$(document).on('click', '.snippet__btn', function(e) {
+  e.preventDefault();
+
+  var snippet = $(this).attr('data-snippet');
+  var container = $('.featured__container');
+  var id = generateID();
+
+  switch (snippet) {
+    case '1':
+    var element = '<section id="'+ id + '" class="feed__item feed__item--border feed__item--clip">';
+    element += '<div class="tools">';
+    element += '<a class="tools__btn tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="tools__btn tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
+    element += '</div>';
+
+
+    element += '<a href="#" class="feed__link">';
+    element += '<h1 class="feed__title feed__title--highlight">Nova Andradina participará da 2ª Semana Nacional da Conciliação Trabalhista</h1>';
+    element += '</a>';
+
+    element += '</section>';
+
+    container.append(element);
+    scrollTo(id);
+    break;
+
+    case '2':
+    var element = '<section id="'+ id + '" class="feed__item feed__item--border feed__item--clip">';
+    element += '<div class="tools">';
+    element += '<a class="tools__btn tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="tools__btn tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
+    element += '</div>';
+
+    element += '<a href="#" class="feed__link">';
+    element += '<h1 class="feed__title feed__title--large">Nova Andradina participará da 2ª Semana Nacional da Conciliação Trabalhista</h1>';
+    element += '<p class="feed__text">A Vara do Trabalho de Nova Andradina, a exemplo das demais Varas Trabalhistas de Mato Grosso do Sul, solicita a inclusão do processo na Semana da Conciliação</p>';
+    element += '</a>';
+
+    element += '</section>';
+
+    container.append(element);
+    scrollTo(id);
+    break;
+
+    case '3':
+    var element = '<section id="'+ id + '" class="feed__item feed__item--border">';
+    element += '<div class="tools">';
+    element += '<a class="tools__btn tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="tools__btn tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
+    element += '</div>';
+
+    element += '<div class="slide">';
+    element += '<section class="slide__item">';
+    element += '<a href="#" class="slide__link">';
+    element += '<h2 class="slide__caption">Corporação de Bombeiros</h2>';
+    element += '<div class="slide__content">';
+    element += '<h1 class="slide__title">Distrito de Nova Casa Verde passa a contar com Unidade de Resgate dos Bombeiros</h1>';
+    element += '<p class="slide__text">Os serviços já podem ser acionados pelo telefone 193. Atendimento está disponível todos os dias da semana</p>';
+    element += '</div>';
+    element += '<figure class="slide__figure"><img  class="slide__image" src="http://www.novanews.com.br/imagem/noticia/780/4000/245835_53441_51808.jpg" alt="Título para imagem"></img></figure>';
+    element += '</a>';
+    element += '</section>';
+    element += '</div>';
+    element += '</div>';
+
+    container.append(element);
+    scrollTo(id);
+    break;
+  }
+
+  editable();
+});
+
+// when click on feed links
+$(document).on('click', '.feed__link', function(e) {
+  e.preventDefault();
+});
+
+$(document).on('click', '.slide__link', function(e) {
+  e.preventDefault();
+});
+
+// scroll to
+var scrollTo = function(id) {
+  if(id) {
+    $('html, body').animate({
+      scrollTop: $('#' + id).offset().top
+    }, 400);
+  }
+};
+
+// generate random id
+var generateID = function() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+};
+
+// content editable
+var editable = function() {
+  $('.feed__title').attr('contenteditable', 'true');
+  $('.feed__text').attr('contenteditable', 'true');
+  $('.slide__caption').attr('contenteditable', 'true');
+  $('.slide__title').attr('contenteditable', 'true');
+  $('.slide__text').attr('contenteditable', 'true');
+}
