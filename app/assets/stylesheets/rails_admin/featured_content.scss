@@ -1,7 +1,7 @@
 @import 'medium-editor/medium-editor';
 @import 'medium-editor/themes/bootstrap';
 
-.snippet {
+.fc-snippet {
   position: fixed;
   z-index: 100;
   top: 50px;
@@ -19,23 +19,19 @@
   overflow-y: scroll;
 }
 
-.snippet__btn {
+.fc-snippet__btn {
   display: block;
   text-decoration: none;
   margin-bottom: 20px;
 
   transition: box-shadow .1s ease;
-
-  &:hover {
-    box-shadow: 0 0 0 2px rgba(0,0,0,.1);
-  }
 }
 
-.snippet__image {
+.fc-snippet__image {
   width: 100%;
 }
 
-.controls {
+.fc-controls {
   position: fixed;
   z-index: 100;
   bottom: 0;
@@ -51,8 +47,9 @@
 }
 
 
-.tools {
+.fc-tools {
   position: absolute;
+  z-index: 200;
   top: 0;
   left: -40px;
 
@@ -62,7 +59,7 @@
   overflow: hidden;
 }
 
-.tools__btn {
+.fc-tools__btn {
   display: block;
 
   font-size: 12px;
@@ -70,29 +67,23 @@
   text-transform: uppercase;
 
   padding: 10px;
-
-  &:hover,
-  &:focus {
-    background: rgba(0,0,0,.05);
-    text-decoration: none;
-  }
 }
 
-.tools__input {
+.fc-tools__input {
 
 }
 
-.tools__input--upload {
+.fc-tools__input--upload {
   display: none !important;
 }
 
 
-.featured__container {
+.fc-container {
   width: 777px;
   padding: 0 0 0 40px;
 }
 
-.content {
+.fc-content {
   position: relative;
   max-width: 100%;
   height: auto !important;
@@ -108,7 +99,7 @@
 }
 
 
-.loading {
+.fc-loading {
   position: absolute;
   top: 0;
   left: 0;
@@ -128,7 +119,7 @@
 }
 
 
-.featured__content {
+.fc-content {
   line-height: 1.6;
 
   color: rgba(0,0,0,.7);
@@ -163,7 +154,6 @@
 
 .feed__item {
   position: relative;
-  backface-visibility: hidden;
 
   &:after {
     visibility: hidden;
@@ -250,10 +240,6 @@
   text-transform: uppercase;
 
   margin: 0 0 8px;
-
-  &:hover {
-    box-shadow: 0 0 0 1px rgba(#000, .1);
-  }
 }
 
 .feed__title {
@@ -264,10 +250,6 @@
   letter-spacing: -.04em;
 
   margin: 0;
-
-  &:hover {
-    box-shadow: 0 0 0 1px rgba(#000, .1);
-  }
 }
 
 .feed__title--highlight {
@@ -276,10 +258,6 @@
 
   color: #fff;
   font-size: 19px !important;
-
-  &:hover {
-    box-shadow: 0 0 0 1px rgba(#000, .1);
-  }
 }
 
 .feed__text {
@@ -291,10 +269,6 @@
   margin: 8px 0 0;
 
   overflow: hidden;
-
-  &:hover {
-    box-shadow: 0 0 0 1px rgba(#000, .1);
-  }
 }
 
 
@@ -523,10 +497,6 @@
 
     background: #444;
   }
-
-  &:hover {
-    box-shadow: 0 0 0 1px rgba(#fff, .2);
-  }
 }
 
 h2.slide__caption {
@@ -548,10 +518,6 @@ h2.slide__caption {
   -webkit-text-shadow: 2px 2px 1px rgba(#111, .5);
   -moz-text-shadow: 2px 2px 1px rgba(#111, .5);
   text-shadow: 2px 2px 1px rgba(#111, .5);
-
-  &:hover {
-    box-shadow: 0 0 0 1px rgba(#fff, .2);
-  }
 }
 
 .slide__text {
@@ -564,10 +530,6 @@ h2.slide__caption {
   line-height: 1.6;
 
   overflow: hidden;
-
-  &:hover {
-    box-shadow: 0 0 0 1px rgba(#fff, .2);
-  }
 }
 
 .slide__figure {

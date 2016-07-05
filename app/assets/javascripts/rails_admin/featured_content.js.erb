@@ -1,9 +1,9 @@
 // when rails admin ready
 $(document).on('rails_admin.dom_ready', function() {
-  $('.featured__container').sortable({
+  $('.fc-container').sortable({
     revert: true,
     placeholder: 'ui-sortable-placeholder',
-    handle: '.tools__btn--move',
+    handle: '.fc-tools__btn--move',
     cursor: 'move',
   });
 
@@ -11,12 +11,12 @@ $(document).on('rails_admin.dom_ready', function() {
 });
 
 // when click on tools buttons
-$(document).on('click', '.tools__btn', function(e) {
+$(document).on('click', '.fc-tools__btn', function(e) {
   e.preventDefault();
 });
 
 // when click on delete button
-$(document).on('click', '.tools__btn--delete', function() {
+$(document).on('click', '.fc-tools__btn--delete', function() {
   var resp = confirm('<%= I18n.t('ad$(min.actions.news_admin.delete_block')%>');
 
   if(resp) {
@@ -25,19 +25,19 @@ $(document).on('click', '.tools__btn--delete', function() {
 });
 
 // when click on snippet buttons
-$(document).on('click', '.snippet__btn', function(e) {
+$(document).on('click', '.fc-snippet__btn', function(e) {
   e.preventDefault();
 
   var snippet = $(this).attr('data-snippet');
-  var container = $('.featured__container');
+  var container = $('.fc-container');
   var id = generateID();
 
   switch (snippet) {
     case '1':
     var element = '<section id="'+ id + '" class="feed__item feed__item--border feed__item--clip">';
-    element += '<div class="tools">';
-    element += '<a class="tools__btn tools__btn--move fa fa-arrows" href="#"></a>';
-    element += '<a class="tools__btn tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
     element += '</div>';
 
 
@@ -53,9 +53,9 @@ $(document).on('click', '.snippet__btn', function(e) {
 
     case '2':
     var element = '<section id="'+ id + '" class="feed__item feed__item--border feed__item--clip">';
-    element += '<div class="tools">';
-    element += '<a class="tools__btn tools__btn--move fa fa-arrows" href="#"></a>';
-    element += '<a class="tools__btn tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
     element += '</div>';
 
     element += '<a href="#" class="feed__link">';
@@ -71,9 +71,9 @@ $(document).on('click', '.snippet__btn', function(e) {
 
     case '3':
     var element = '<section id="'+ id + '" class="feed__item feed__item--border">';
-    element += '<div class="tools">';
-    element += '<a class="tools__btn tools__btn--move fa fa-arrows" href="#"></a>';
-    element += '<a class="tools__btn tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
     element += '</div>';
 
     element += '<div class="slide">';
