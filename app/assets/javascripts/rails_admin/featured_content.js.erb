@@ -7,6 +7,11 @@ $(document).on('rails_admin.dom_ready', function() {
     cursor: 'move',
   });
 
+  $('.fc-form').on('submit', function(e){
+    var content = $('.fc-container').html();
+    $('#content').attr('value', content);
+  });
+
   editable();
 });
 

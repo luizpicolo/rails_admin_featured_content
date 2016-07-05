@@ -15,11 +15,20 @@
   <% end %>
 </div>
 
-<%= simple_form_for rails_admin.content_builder_url(@abstract_model.to_param, id: @object.id), html: { class: 'form' }, remote: false do |f| %>
+<%= simple_form_for rails_admin.featured_content_url(@abstract_model.to_param, id: @object.id), html: { class: 'fc-form' }, remote: false do |f| %>
   <div class="fc-controls">
-    <%= f.button :submit, 'Salvar', name: 'save', class: 'btn btn-block btn-primary' %>
-    <%= f.button :submit, 'Publicar', name: 'publish', class: 'btn btn-block btn-success' %>
+    <%= f.button :submit, "Salvar", name: 'save', class: 'btn btn-block btn-primary' %>
+    <% if @object.status %>
+      <%= f.button :submit, "Despublicar", name: 'unpublish', class: 'btn btn-block btn-danger' %>
+    <% else %>
+      <%= f.button :submit, "Publicar", name: 'publish', class: 'btn btn-block btn-success' %>
+    <% end %>
   </div>
 
-  <div class="fc-container"></div>
+  <div class="fc-container">
+    <%= @object.content.try(:html_safe) %>
+  </div>
+
+  <%= f.input :id, as: :hidden, :input_html => { :name => "id", :value => @object.id } %>
+  <%= f.input :content, as: :hidden, :input_html => { :name => "content", :id => "content", :value => @object.content } %>
 <% end %>

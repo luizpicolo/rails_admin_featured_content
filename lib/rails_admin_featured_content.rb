@@ -28,7 +28,22 @@ module RailsAdmin
             @response = {}
 
             if request.post?
-              # Implementation
+              if params.present?
+
+                if params[:publish]
+                  status = true
+                elsif params[:unpublish]
+                  status = false
+                elsif params[:save]
+                  status = @object.status
+                end
+
+                if @object.update(content: params[:content], status: status)
+                  flash[:success] = "Sucesso"
+                else
+                  flash[:error] = "Erro"
+                end
+              end
             end
 
             render :action => @action.template_name
