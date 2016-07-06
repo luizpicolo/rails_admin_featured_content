@@ -25,6 +25,10 @@
   margin-bottom: 20px;
 
   transition: box-shadow .1s ease;
+
+  &:hover {
+    box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+  }
 }
 
 .fc-snippet__image {
@@ -166,7 +170,7 @@
 
   h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: 'Open Sans', sans-serif !important;
-    font-weight: 800 !important;
+    font-weight: 700 !important;
   }
 }
 
@@ -256,7 +260,7 @@
   padding: 8px;
   background: #333;
 
-  color: #fff;
+  color: #fff !important;
   font-size: 19px !important;
 }
 
@@ -267,8 +271,6 @@
   font-size: 14px;
 
   margin: 8px 0 0;
-
-  overflow: hidden;
 }
 
 
@@ -304,23 +306,6 @@
 
   .feed__text {
     font-size: 14px;
-  }
-
-  .feed__item--clip {
-    .feed__title {
-      max-height: 2.6em;
-      overflow: hidden;
-    }
-
-    .feed__caption {
-      max-height: 1.3em;
-      overflow: hidden;
-    }
-
-    .feed__text {
-      max-height: 2.8em;
-      overflow: hidden;
-    }
   }
 }
 
@@ -378,12 +363,6 @@
   .feed__title--highlight {
     padding: 8px 14px;
   }
-
-  .feed__text {
-    max-height: 2.4em;
-    overflow: hidden;
-  }
-
 
   .feed__figure--block {
     float: none;
@@ -523,13 +502,9 @@ h2.slide__caption {
 .slide__text {
   margin: 8px 0 0;
 
-  max-height: 3.2em;
-
   color: #fff;
   font-size: 16px;
   line-height: 1.6;
-
-  overflow: hidden;
 }
 
 .slide__figure {
