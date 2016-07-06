@@ -50,9 +50,12 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<h1 class="feed__title feed__title--highlight">Nova Andradina participará da 2ª Semana Nacional da Conciliação Trabalhista</h1>';
     element += '</a>';
 
+    element += '<input type="text" name="search" placeholder="search">';
+
     element += '</section>';
 
     container.append(element);
+    autocomplete(id);
     scrollTo(id);
     break;
 
@@ -68,13 +71,13 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<p class="feed__text">A Vara do Trabalho de Nova Andradina, a exemplo das demais Varas Trabalhistas de Mato Grosso do Sul, solicita a inclusão do processo na Semana da Conciliação</p>';
     element += '</a>';
 
-    element += '</section>';
+    element += '<input type="text" name="search" placeholder="search">';
 
-    element += '<input type="text" id="tags" name="search" placeholder="search">';
+    element += '</section>';
 
     container.append(element);
     scrollTo(id);
-    autocomplete();
+    autocomplete(id);
     break;
 
     case '3':
@@ -138,14 +141,18 @@ var editable = function() {
   $('.slide__text').attr('contenteditable', 'true');
 }
 
-autocomplete = function() {
-  $("#tags").autocomplete({
-    source: "/featured_content",
+autocomplete = function(id) {
+  $('#' + id + ' input').autocomplete({
+    source: "search_content",
     minLength: 2,
-    select: function( event, ui ) {
-      log( ui.item ?
-      "Selected: " + ui.item.value + " aka " + ui.item.id :
-      "Nothing selected, input was " + this.value );
+    select: function(event, ui) {
+      $("#" + id + ' h1').text(ui.item.title);
+      $("#" + id + ' p').text(ui.item.summary);
+      return false;
     }
-  });
-}
+  }).autocomplete("instance")._renderItem = function( ul, item ) {
+    return $( "<li>" )
+        .append( "<a>" + item.title + "</a>" )
+        .appendTo( ul );
+  };
+};
