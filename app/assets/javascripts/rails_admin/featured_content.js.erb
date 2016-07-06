@@ -43,20 +43,19 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
   switch (snippet) {
     case '1':
-    var element = '<section id="'+ id + '" class="feed__item feed__item--border">';
+    var element = '<div class="fc-row">';
     element += '<div class="fc-tools">';
     element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
     element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
     element += '</div>';
 
-
+    element = '<section id="'+ id + '" class="feed__item feed__item--border">';
     element += '<a href="#" class="feed__link">';
     element += '<h1 class="feed__title feed__title--highlight">Nova Andradina participará da 2ª Semana Nacional da Conciliação Trabalhista</h1>';
     element += '</a>';
-
     element += '<input type="text" name="search" placeholder="search">';
-
     element += '</section>';
+    element += '</div>';
 
     container.append(element);
     autocomplete(id);
@@ -64,20 +63,20 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     break;
 
     case '2':
-    var element = '<section id="'+ id + '" class="feed__item feed__item--border">';
+    var element = '<div class="fc-row">';
     element += '<div class="fc-tools">';
     element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
     element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
     element += '</div>';
 
+    element = '<section id="'+ id + '" class="feed__item feed__item--border">';
     element += '<a href="#" class="feed__link">';
     element += '<h1 class="feed__title feed__title--large">Nova Andradina participará da 2ª Semana Nacional da Conciliação Trabalhista</h1>';
     element += '<p class="feed__text">A Vara do Trabalho de Nova Andradina, a exemplo das demais Varas Trabalhistas de Mato Grosso do Sul, solicita a inclusão do processo na Semana da Conciliação</p>';
     element += '</a>';
-
     element += '<input type="text" name="search" placeholder="search">';
-
     element += '</section>';
+    element += '</div>';
 
     container.append(element);
     scrollTo(id);
@@ -85,12 +84,13 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     break;
 
     case '3':
-    var element = '<section id="'+ id + '" class="feed__item feed__item--border">';
+    var element = '<div class="fc-row">';
     element += '<div class="fc-tools">';
     element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
     element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
     element += '</div>';
 
+    element = '<div id="'+ id + '" class="feed__item feed__item--border">';
     element += '<div class="slide">';
     element += '<section class="slide__item">';
     element += '<a href="#" class="slide__link">';
@@ -102,6 +102,32 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<figure class="slide__figure"><img  class="slide__image" src="http://www.novanews.com.br/imagem/noticia/780/4000/245835_53441_51808.jpg" alt="Título para imagem"></img></figure>';
     element += '</a>';
     element += '</section>';
+    element += '</div>';
+    element += '</div>';
+    element += '</div>';
+
+    container.append(element);
+    scrollTo(id);
+    break;
+
+    case '4':
+    var element = '<div class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ id + '"></a>';
+    element += '</div>';
+
+    element = '<div class="feed__row">';
+    <% for i in 1..3 do %>
+    element += '<section id="'+ id + '" class="feed__item feed__item--three feed__item--border">';
+    element += '<a href="#" class="feed__link">';
+    element += '<h2 class="feed__caption">Trânsito</h2>';
+    element += '<figure class="feed__figure feed__figure--block feed__figure--large"><img src="http://www.novanews.com.br/imagem/noticia/780/4000/245992_53489_41746.jpg" alt="Título da imagem" class="feed__image"></figure>';
+    element += '<h1 class="feed__title feed__title--small">Colisão deixa motociclista ferido no centro de Nova Andradina</h1>';
+    element += '<p class="feed__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rerum minus impedit quasi maiores in id fuga quod, neque ipsum</p>';
+    element += '</a>';
+    element += '</section>';
+    <% end %>
     element += '</div>';
     element += '</div>';
 
