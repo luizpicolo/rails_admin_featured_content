@@ -22,7 +22,7 @@ $(document).on('click', '.fc-tools__btn', function(e) {
 
 // when click on delete button
 $(document).on('click', '.fc-tools__btn--delete', function() {
-  var resp = confirm('<%= I18n.t('ad$(min.actions.news_admin.delete_block')%>');
+  var resp = confirm('<%= I18n.t('admin.actions.featured_content.delete_block')%>');
 
   if(resp) {
     $($(this).attr('href')).remove();
@@ -70,8 +70,11 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
     element += '</section>';
 
+    element += '<input type="text" id="tags" name="search" placeholder="search">';
+
     container.append(element);
     scrollTo(id);
+    autocomplete();
     break;
 
     case '3':
@@ -133,4 +136,16 @@ var editable = function() {
   $('.slide__caption').attr('contenteditable', 'true');
   $('.slide__title').attr('contenteditable', 'true');
   $('.slide__text').attr('contenteditable', 'true');
+}
+
+autocomplete = function() {
+  $("#tags").autocomplete({
+    source: "/featured_content",
+    minLength: 2,
+    select: function( event, ui ) {
+      log( ui.item ?
+      "Selected: " + ui.item.value + " aka " + ui.item.id :
+      "Nothing selected, input was " + this.value );
+    }
+  });
 }

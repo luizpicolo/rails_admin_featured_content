@@ -104,7 +104,7 @@
 
 .feed__caption {
   color: lighten(#111, 40%);
-  font-family: $family-one;
+  //font-family: $family-one;
   font-size: .75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -196,18 +196,48 @@
 
 @media screen and (min-width 768px) {
   .feed__item--two {
-    @include span-columns(4 of 8);
-    @include omega(2n);
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 48.21067%;
+
+    &:nth-child(2n+1) {
+      clear: left;
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
   }
 
   .feed__item--three {
-    @include span-columns(3 of 9);
-    @include omega(3n);
+    float: left;
+    display: block;
+    margin-right: 3.16844%;
+    width: 31.22104%;
+
+    &:nth-child(3n+1) {
+      clear: left;
+    }
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
   }
 
   .feed__item--four {
-    @include span-columns(2 of 8);
-    @include omega(4n);
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 22.316%;
+
+    &:nth-child(4n+1) {
+      clear: left;
+    }
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
   }
 
 
