@@ -13,6 +13,10 @@
   <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '3'} do %>
     <%= image_tag 'snippet-text.jpg', class: 'fc-snippet__image' %>
   <% end %>
+
+  <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '4'} do %>
+    <%= image_tag 'snippet-text.jpg', class: 'fc-snippet__image' %>
+  <% end %>
 </div>
 
 <%= simple_form_for rails_admin.featured_content_url(@abstract_model.to_param, id: @object.id), html: { class: 'fc-form' }, remote: false do |f| %>

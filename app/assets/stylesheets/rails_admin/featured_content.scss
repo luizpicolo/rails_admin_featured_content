@@ -102,6 +102,10 @@
   }
 }
 
+.fc-row {
+  position: relative;
+}
+
 
 .fc-loading {
   position: absolute;
@@ -135,6 +139,7 @@
 
 
 .feed__row {
+  position: relative;
 
   &:after {
     visibility: hidden;
