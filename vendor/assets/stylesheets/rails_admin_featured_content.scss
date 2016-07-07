@@ -104,7 +104,6 @@
 
 .feed__caption {
   color: lighten(#111, 40%);
-  //font-family: $family-one;
   font-size: .75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -115,7 +114,7 @@
 .feed__title {
   line-height: 1.2;
 
-  color: lighten(#111, 23%);
+  color: lighten(#111, 25%);
   font-size: 1rem;
   letter-spacing: -.04rem;
 
@@ -142,7 +141,7 @@
 }
 
 
-@media screen and (min-width 460px) {
+@media screen and (min-width: 460px) {
   .feed__figure {
     float: left;
     height: 7rem;
@@ -175,26 +174,9 @@
   .feed__text {
     font-size: .9rem;
   }
-
-  .feed__item--clip {
-    .feed__title {
-      max-height: 2.6em;
-      overflow: hidden;
-    }
-
-    .feed__caption {
-      max-height: 1.3em;
-      overflow: hidden;
-    }
-
-    .feed__text {
-      max-height: 2.8em;
-      overflow: hidden;
-    }
-  }
 }
 
-@media screen and (min-width 768px) {
+@media screen and (min-width: 768px) {
   .feed__item--two {
     float: left;
     display: block;
@@ -249,12 +231,6 @@
     padding: .6rem .9rem;
   }
 
-  .feed__text {
-    max-height: 2.4rem;
-    overflow: hidden;
-  }
-
-
   .feed__figure--block {
     float: none;
     width: 100%;
@@ -272,19 +248,5 @@
 
   .feed__figure--large {
     height: 8rem;
-  }
-
-  .feed__figure--clip {
-    .feed__figure {
-      width: 10rem;
-    }
-
-    .feed__figure--small {
-      width: 6rem;
-    }
-
-    .feed__figure--large {
-      width: 14rem;
-    }
   }
 }
