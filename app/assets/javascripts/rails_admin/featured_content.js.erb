@@ -11,6 +11,10 @@ $(document).on('rails_admin.dom_ready', function() {
     autocomplete($(this).attr('id'));
   });
 
+  $('.fc-tools__input--upload').each(function() {
+    addEventToInputFile($(this).attr('id'));
+  });
+
   $('.fc-form').on('submit', function(e){
     var content = $('.fc-container').html();
     $('#content').attr('value', content);
@@ -22,6 +26,11 @@ $(document).on('rails_admin.dom_ready', function() {
 // when click on tools buttons
 $(document).on('click', '.fc-tools__btn', function(e) {
   e.preventDefault();
+});
+
+// when click on upload button
+$(document).on('click', '.fc-tools__btn--upload', function() {
+  $($(this).attr('href')).find('input').trigger('click');
 });
 
 // when click on delete button
@@ -101,7 +110,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<h1 class="slide__title">Distrito de Nova Casa Verde passa a contar com Unidade de Resgate dos Bombeiros</h1>';
     element += '<p class="slide__text">Os serviços já podem ser acionados pelo telefone 193. Atendimento está disponível todos os dias da semana</p>';
     element += '</div>';
-    element += '<figure class="slide__figure"><img  class="slide__image" src="http://www.novanews.com.br/imagem/noticia/780/4000/245835_53441_51808.jpg" alt="Título para imagem"></img></figure>';
+    element += '<figure class="slide__figure"><img class="slide__image" src="<%= image_url('image-default.jpg') %>"></figure>';
     element += '</a>';
     element += '</section>';
     element += '</div>';
@@ -127,12 +136,15 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     for(var i = 0; i < 3; i++) {
       element += '<section id="'+ section_id +'" class="feed__item feed__item--three feed__item--border">';
       element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
-      element += '<a href="#" class="feed__link">';
+      element += '<a href="#" class="feed__link feed__link--absolute"></a>';
       element += '<h2 class="feed__caption">Trânsito</h2>';
-      element += '<figure class="feed__figure feed__figure--block feed__figure--large"><img src="http://www.novanews.com.br/imagem/noticia/780/4000/245992_53489_41746.jpg" alt="Título da imagem" class="feed__image"></figure>';
+      element += '<figure class="feed__figure feed__figure--block feed__figure--large">';
+      element += '<img class="feed__image" src="<%= image_url('image-default.jpg') %>">';
+      element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+      element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+      element += '</figure>';
       element += '<h1 class="feed__title feed__title--small">Colisão deixa motociclista ferido no centro de Nova Andradina</h1>';
       element += '<p class="feed__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rerum minus impedit quasi maiores in id fuga quod, neque ipsum</p>';
-      element += '</a>';
       element += '</section>';
 
       sections.push(section_id);
@@ -146,6 +158,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
     for(var i = 0; i < sections.length; i++) {
       autocomplete(sections[i]);
+      addEventToInputFile(sections[i]);
     }
 
     scrollTo(row_id);
@@ -154,6 +167,45 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
   editable();
 });
+
+
+
+// add event on input file
+var addEventToInputFile = function(id) {
+  $('#' + id + ' input:file').on('change', fileSelectAndUpload);
+};
+
+// upload file via ajax
+var fileSelectAndUpload = function(evt) {
+  var file = evt.target.files[0];
+
+  if(file) {
+    var formData = new FormData();
+    formData.append('featured_content_image', file);
+
+    $.ajax({
+      url: 'create_images',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'PUT',
+      beforeSend: function() {
+        $('#' + evt.target.id).find('figure').append('<div class="fc-loading"></div>');
+      },
+      complete: function(){
+        $('.fc-loading').remove();
+      }
+    }).done(function(e) {
+      $('#' + evt.target.id).find('img').attr('src', e.image.thumb.url);
+    }).fail(function(e) {
+      alert('error: ' + e);
+    });
+  }
+};
+
+
+
 
 // when click on feed links
 $(document).on('click', '.feed__link', function(e) {
@@ -182,13 +234,14 @@ var generateID = function() {
 var editable = function() {
   $('.feed__title').attr('contenteditable', 'true');
   $('.feed__text').attr('contenteditable', 'true');
+  $('.feed__caption').attr('contenteditable', 'true');
   $('.slide__caption').attr('contenteditable', 'true');
   $('.slide__title').attr('contenteditable', 'true');
   $('.slide__text').attr('contenteditable', 'true');
 }
 
 autocomplete = function(id) {
-  $('#' + id + ' input').autocomplete({
+  $('#' + id + ' input:text').autocomplete({
     source: "search_content",
     minLength: 2,
     select: function(event, ui) {
