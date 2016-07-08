@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "friendly_id", "~> 5.1.0"
   spec.add_dependency "simple_form", "~> 3.2"
   spec.add_dependency "rails-html-sanitizer"
+  spec.add_dependency "owlcarousel-rails"
 end
