@@ -9,6 +9,7 @@ $(document).on('rails_admin.dom_ready', function() {
 
   $('.feed__item').each(function() {
     autocomplete($(this).attr('id'));
+    addEventToInputFile($(this).attr('id'));
   });
 
   $('.fc-tools__input--upload').each(function() {
@@ -169,7 +170,6 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 });
 
 
-
 // add event on input file
 var addEventToInputFile = function(id) {
   $('#' + id + ' input:file').on('change', fileSelectAndUpload);
@@ -203,9 +203,6 @@ var fileSelectAndUpload = function(evt) {
     });
   }
 };
-
-
-
 
 // when click on feed links
 $(document).on('click', '.feed__link', function(e) {
