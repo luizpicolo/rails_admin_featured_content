@@ -9,6 +9,7 @@ $(document).on('rails_admin.dom_ready', function() {
 
   $('.feed__item').each(function() {
     autocomplete($(this).attr('id'));
+    addEventToInputFile($(this).attr('id'));
   });
 
   $('.fc-form').on('submit', function(e){
@@ -132,6 +133,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
       element += '<h1 class="feed__title feed__title--small">Colisão deixa motociclista ferido no centro de Nova Andradina</h1>';
       element += '<p class="feed__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rerum minus impedit quasi maiores in id fuga quod, neque ipsum</p>';
       element += '</a>';
+      element += '<input type="file" name="image" id="'+ section_id +'">';
       element += '<input type="text" name="search" placeholder="search">';
       element += '</section>';
 
@@ -146,6 +148,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
     for(var i = 0; i < sections.length; i++) {
       autocomplete(sections[i]);
+      addEventToInputFile(sections[i]);
     }
 
     scrollTo(row_id);
@@ -154,6 +157,45 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
   editable();
 });
+
+
+
+// add event on input file
+var addEventToInputFile = function(id) {
+  $('section#' + id + ' input:file').on('change', fileSelectAndUpload);
+};
+
+// upload file via ajax
+var fileSelectAndUpload = function(evt) {
+  var file = evt.target.files[0];
+
+  if(file) {
+    var formData = new FormData();
+    formData.append('featured_content_image', file);
+
+    $.ajax({
+      url: 'create_images',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'PUT',
+      beforeSend: function() {
+        $('#' + evt.target.id).find('figure').append('<div class="fc-loading"></div>');
+      },
+      complete: function(){
+        $('.fc-loading').remove();
+      }
+    }).done(function(e) {
+      $('#' + evt.target.id).find('img').attr('src', e.image.thumb.url);
+    }).fail(function(e) {
+      alert('error: ' + e);
+    });
+  }
+};
+
+
+
 
 // when click on feed links
 $(document).on('click', '.feed__link', function(e) {
@@ -188,7 +230,7 @@ var editable = function() {
 }
 
 autocomplete = function(id) {
-  $('#' + id + ' input').autocomplete({
+  $('#' + id + ' input:text').autocomplete({
     source: "search_content",
     minLength: 2,
     select: function(event, ui) {
