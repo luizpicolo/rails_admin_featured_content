@@ -1,4 +1,5 @@
 require 'simple_form'
+require 'owlcarousel-rails'
 
 module RailsAdminFeaturedContent
   class Engine < ::Rails::Engine

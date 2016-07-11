@@ -1,3 +1,5 @@
+//= require owl.carousel
+
 // when rails admin ready
 $(document).on('rails_admin.dom_ready', function() {
   $('.fc-container').sortable({
@@ -7,7 +9,7 @@ $(document).on('rails_admin.dom_ready', function() {
     cursor: 'move',
   });
 
-  $('.feed__item').each(function() {
+  $('.fc-item').each(function() {
     autocomplete($(this).attr('id'));
     addEventToInputFile($(this).attr('id'));
   });
@@ -16,12 +18,15 @@ $(document).on('rails_admin.dom_ready', function() {
     addEventToInputFile($(this).attr('id'));
   });
 
-  $('.fc-form').on('submit', function(e){
+  $('.fc-form').on('submit', function(e) {
+    slideDestroy($('.slide'));
+
     var content = $('.fc-container').html();
     $('#content').attr('value', content);
   });
 
   editable();
+  slideActive($('.slide'));
 });
 
 // when click on tools buttons
@@ -60,11 +65,10 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id + '"></a>';
     element += '</div>';
 
-    element += '<section id="'+ section_id +'" class="feed__item feed__item--border">';
+    element += '<section id="'+ section_id +'" class="fc-item feed__item feed__item--border">';
     element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
-    element += '<a href="#" class="feed__link">';
+    element += '<a href="#" class="feed__link feed__link--absolute"></a>';
     element += '<h1 class="feed__title feed__title--highlight">Nova Andradina participará da 2ª Semana Nacional da Conciliação Trabalhista</h1>';
-    element += '</a>';
     element += '</section>';
     element += '</div>';
 
@@ -80,12 +84,11 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
     element += '</div>';
 
-    element += '<section id="'+ section_id +'" class="feed__item feed__item--border">';
-    element += '<a href="#" class="feed__link">';
+    element += '<section id="'+ section_id +'" class="fc-item feed__item feed__item--border">';
+    element += '<a href="#" class="feed__link feed__link--absolute"></a>';
     element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
     element += '<h1 class="feed__title feed__title--large">Nova Andradina participará da 2ª Semana Nacional da Conciliação Trabalhista</h1>';
     element += '<p class="feed__text">A Vara do Trabalho de Nova Andradina, a exemplo das demais Varas Trabalhistas de Mato Grosso do Sul, solicita a inclusão do processo na Semana da Conciliação</p>';
-    element += '</a>';
     element += '</section>';
     element += '</div>';
 
@@ -95,32 +98,54 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     break;
 
     case '3':
+    var sections = [];
+
     var element = '<div id="'+ row_id +'" class="fc-row">';
     element += '<div class="fc-tools">';
     element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
     element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
     element += '</div>';
 
-    element += '<div id="'+ section_id +'" class="feed__item feed__item--border">';
+    element += '<div class="feed__item feed__item--border">';
     element += '<div class="slide">';
-    element += '<section class="slide__item">';
-    element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
-    element += '<a href="#" class="slide__link">';
-    element += '<h2 class="slide__caption">Corporação de Bombeiros</h2>';
-    element += '<div class="slide__content">';
-    element += '<h1 class="slide__title">Distrito de Nova Casa Verde passa a contar com Unidade de Resgate dos Bombeiros</h1>';
-    element += '<p class="slide__text">Os serviços já podem ser acionados pelo telefone 193. Atendimento está disponível todos os dias da semana</p>';
-    element += '</div>';
-    element += '<figure class="slide__figure"><img class="slide__image" src="<%= image_url('image-default.jpg') %>"></figure>';
-    element += '</a>';
-    element += '</section>';
+
+    for(var i = 0; i < 3; i++) {
+      element += '<div class="fc-item" id="'+ section_id +'">';
+      element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+      element += '<section class="slide__item">';
+      // element += '<a class="fc-tools__btn fa fa-plus" href="#"></a>';
+      // element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ section_id +'"></a>';
+      element += '<a href="#" class="slide__link"></a>';
+      element += '<h2 class="slide__caption">Corporação de Bombeiros</h2>';
+      element += '<div class="slide__content">';
+      element += '<h1 class="slide__title">Distrito de Nova Casa Verde passa a contar com Unidade de Resgate dos Bombeiros</h1>';
+      element += '<p class="slide__text">Os serviços já podem ser acionados pelo telefone 193. Atendimento está disponível todos os dias da semana</p>';
+      element += '</div>';
+      element += '<figure class="slide__figure">';
+      element += '<img class="slide__image" src="<%= image_url('image-default.jpg') %>">';
+      element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+      element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+      element += '</figure>';
+      element += '</section>';
+      element += '</div>';
+
+      sections.push(section_id);
+      section_id = generateID();
+    }
+
     element += '</div>';
     element += '</div>';
     element += '</div>';
 
     container.append(element);
-    autocomplete(section_id);
+
+    for(var i = 0; i < sections.length; i++) {
+      autocomplete(sections[i]);
+      addEventToInputFile(sections[i]);
+    }
+
     scrollTo(row_id);
+    slideActive($('.slide'));
     break;
 
     case '4':
@@ -135,7 +160,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<div class="feed__row">';
 
     for(var i = 0; i < 3; i++) {
-      element += '<section id="'+ section_id +'" class="feed__item feed__item--three feed__item--border">';
+      element += '<section id="'+ section_id +'" class="fc-item feed__item feed__item--three feed__item--border">';
       element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
       element += '<a href="#" class="feed__link feed__link--absolute"></a>';
       element += '<h2 class="feed__caption">Trânsito</h2>';
@@ -169,6 +194,28 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
   editable();
 });
 
+// slide active
+var slideActive = function(container) {
+  if(container) {
+    container.owlCarousel({
+      autoPlay: 7000,
+      singleItem: true,
+      stopOnHover: true,
+      slideSpeed: 500,
+      paginationSpeed: 500,
+      rewindSpeed: 1000,
+      navigation: true,
+      navigationText: ['&lsaquo;','&rsaquo;']
+    });
+  }
+};
+
+// slide destroy
+var slideDestroy = function(container) {
+  if(container.length) {
+    container.data('owlCarousel').destroy();
+  }
+}
 
 // add event on input file
 var addEventToInputFile = function(id) {
