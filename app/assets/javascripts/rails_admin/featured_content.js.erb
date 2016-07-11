@@ -39,6 +39,20 @@ $(document).on('click', '.fc-tools__btn--upload', function() {
   $($(this).attr('href')).find('input').trigger('click');
 });
 
+// when click on slide add button
+$(document).on('click', '.fc-tools__btn--slide-add', function(e) {
+  slideAdd($('.slide'), $(this));
+});
+
+// when click on slide remove button
+$(document).on('click', '.fc-tools__btn--slide-remove', function(e) {
+  var resp = confirm('<%= I18n.t('admin.actions.featured_content.delete_block')%>');
+
+  if(resp) {
+    slideRemove($('.slide'), $(this));
+  }
+});
+
 // when click on delete button
 $(document).on('click', '.fc-tools__btn--delete', function() {
   var resp = confirm('<%= I18n.t('admin.actions.featured_content.delete_block')%>');
@@ -114,8 +128,8 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
       element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
       element += '<section class="slide__item">';
       element += '<div class="fc-tools fc-tools--slide">';
-      element += '<a class="fc-tools__btn fa fa-plus" href="#"></a>';
-      element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ section_id +'"></a>';
+      element += '<a class="fc-tools__btn fc-tools__btn--slide-add fa fa-plus" href="#'+ section_id +'"></a>';
+      element += '<a class="fc-tools__btn fc-tools__btn--slide-remove fa fa-trash" href="#'+ section_id +'"></a>';
       element += '</div>';
       element += '<a href="#" class="slide__link"></a>';
       element += '<h2 class="slide__caption">Corporação de Bombeiros</h2>';
@@ -207,6 +221,8 @@ var slideActive = function(container) {
       paginationSpeed: 500,
       rewindSpeed: 1000,
       navigation: true,
+      touchDrag: false,
+      mouseDrag: false,
       navigationText: ['&lsaquo;','&rsaquo;']
     });
   }
@@ -220,26 +236,54 @@ var slideDestroy = function(container) {
 }
 
 // slide add
-var slideAdd = function(container) {
+var slideAdd = function(container, reference) {
   section_id = generateID();
 
-  var element = '<section id="'+ section_id +'" class="fc-item feed__item feed__item--three feed__item--border">';
+  var element = '<div class="fc-item" id="'+ section_id +'">';
   element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
-  element += '<a href="#" class="feed__link feed__link--absolute"></a>';
-  element += '<h2 class="feed__caption">Trânsito</h2>';
-  element += '<figure class="feed__figure feed__figure--block feed__figure--large">';
-  element += '<img class="feed__image" src="<%= image_url('image-default.jpg') %>">';
+  element += '<section class="slide__item">';
+  element += '<div class="fc-tools fc-tools--slide">';
+  element += '<a class="fc-tools__btn fc-tools__btn--slide-add fa fa-plus" href="#'+ section_id +'"></a>';
+  element += '<a class="fc-tools__btn fc-tools__btn--slide-remove fa fa-trash" href="#'+ section_id +'"></a>';
+  element += '</div>';
+  element += '<a href="#" class="slide__link"></a>';
+  element += '<h2 class="slide__caption">Corporação de Bombeiros</h2>';
+  element += '<div class="slide__content">';
+  element += '<h1 class="slide__title">Distrito de Nova Casa Verde passa a contar com Unidade de Resgate dos Bombeiros</h1>';
+  element += '<p class="slide__text">Os serviços já podem ser acionados pelo telefone 193. Atendimento está disponível todos os dias da semana</p>';
+  element += '</div>';
+  element += '<figure class="slide__figure">';
+  element += '<img class="slide__image" src="<%= image_url('image-default.jpg') %>">';
   element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
   element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
   element += '</figure>';
-  element += '<h1 class="feed__title feed__title--small">Colisão deixa motociclista ferido no centro de Nova Andradina</h1>';
-  element += '<p class="feed__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rerum minus impedit quasi maiores in id fuga quod, neque ipsum</p>';
   element += '</section>';
+  element += '</div>';
 
-  container.data('owlCarousel').addItem(element);
+  var items = $('.fc-item');
+
+  for(i = 0; i < items.length; i++) {
+    if('#' + items[i].id == reference.attr('href')) {
+      container.data('owlCarousel').addItem(element, [i]);
+      container.data('owlCarousel').goTo(i);
+    }
+  }
 
   autocomplete(section_id);
   addEventToInputFile(section_id);
+  editable();
+}
+
+// slide remove
+var slideRemove = function(container, reference) {
+  var items = $('.fc-item');
+
+  for(i = 0; i < items.length; i++) {
+    if('#' + items[i].id == reference.attr('href')) {
+      container.data('owlCarousel').removeItem(i - 1);
+      container.data('owlCarousel').goTo(i - 1);
+    }
+  }
 }
 
 // add event on input file
