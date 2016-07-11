@@ -113,8 +113,10 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
       element += '<div class="fc-item" id="'+ section_id +'">';
       element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
       element += '<section class="slide__item">';
-      // element += '<a class="fc-tools__btn fa fa-plus" href="#"></a>';
-      // element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ section_id +'"></a>';
+      element += '<div class="fc-tools fc-tools--slide">';
+      element += '<a class="fc-tools__btn fa fa-plus" href="#"></a>';
+      element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ section_id +'"></a>';
+      element += '</div>';
       element += '<a href="#" class="slide__link"></a>';
       element += '<h2 class="slide__caption">Corporação de Bombeiros</h2>';
       element += '<div class="slide__content">';
@@ -198,10 +200,10 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 var slideActive = function(container) {
   if(container) {
     container.owlCarousel({
-      autoPlay: 7000,
       singleItem: true,
-      stopOnHover: true,
       slideSpeed: 500,
+      autoPlay: 8000,
+      stopOnHover: true,
       paginationSpeed: 500,
       rewindSpeed: 1000,
       navigation: true,
@@ -215,6 +217,29 @@ var slideDestroy = function(container) {
   if(container.length) {
     container.data('owlCarousel').destroy();
   }
+}
+
+// slide add
+var slideAdd = function(container) {
+  section_id = generateID();
+
+  var element = '<section id="'+ section_id +'" class="fc-item feed__item feed__item--three feed__item--border">';
+  element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+  element += '<a href="#" class="feed__link feed__link--absolute"></a>';
+  element += '<h2 class="feed__caption">Trânsito</h2>';
+  element += '<figure class="feed__figure feed__figure--block feed__figure--large">';
+  element += '<img class="feed__image" src="<%= image_url('image-default.jpg') %>">';
+  element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+  element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+  element += '</figure>';
+  element += '<h1 class="feed__title feed__title--small">Colisão deixa motociclista ferido no centro de Nova Andradina</h1>';
+  element += '<p class="feed__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam rerum minus impedit quasi maiores in id fuga quod, neque ipsum</p>';
+  element += '</section>';
+
+  container.data('owlCarousel').addItem(element);
+
+  autocomplete(section_id);
+  addEventToInputFile(section_id);
 }
 
 // add event on input file
