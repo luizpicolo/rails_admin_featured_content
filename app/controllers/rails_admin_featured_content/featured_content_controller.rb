@@ -1,7 +1,7 @@
 module RailsAdminFeaturedContent
   class FeaturedContentController < ::ApplicationController
     def search_content
-      @content_builder = ContentBuilder.search(params[:term])
+      @content_builder = RailsAdminContentBuilder::ContentBuilder.search(params[:term])
       if @content_builder
         render json: @content_builder
       else
