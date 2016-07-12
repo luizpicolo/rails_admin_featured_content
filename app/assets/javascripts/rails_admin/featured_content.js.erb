@@ -124,7 +124,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<div class="slide">';
 
     for(var i = 0; i < 3; i++) {
-      element += '<div class="fc-item" id="'+ section_id +'">';
+      element += '<div class="fc-item fc-item__slide" id="'+ section_id +'">';
       element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
       element += '<section class="slide__item">';
       element += '<div class="fc-tools fc-tools--slide">';
@@ -239,7 +239,7 @@ var slideDestroy = function(container) {
 var slideAdd = function(container, reference) {
   section_id = generateID();
 
-  var element = '<div class="fc-item" id="'+ section_id +'">';
+  var element = '<div class="fc-item fc-item__slide" id="'+ section_id +'">';
   element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
   element += '<section class="slide__item">';
   element += '<div class="fc-tools fc-tools--slide">';
@@ -260,12 +260,12 @@ var slideAdd = function(container, reference) {
   element += '</section>';
   element += '</div>';
 
-  var items = $('.fc-item');
+  var items = $('.fc-item__slide');
 
   for(i = 0; i < items.length; i++) {
     if('#' + items[i].id == reference.attr('href')) {
-      container.data('owlCarousel').addItem(element, [i]);
-      container.data('owlCarousel').goTo(i);
+      container.data('owlCarousel').addItem(element, [i + 1]);
+      container.data('owlCarousel').goTo(i + 1);
     }
   }
 
@@ -276,12 +276,17 @@ var slideAdd = function(container, reference) {
 
 // slide remove
 var slideRemove = function(container, reference) {
-  var items = $('.fc-item');
+  var items = $('.fc-item__slide');
 
   for(i = 0; i < items.length; i++) {
+    console.log(items[i]);
+    console.log(items[i].id);
+
     if('#' + items[i].id == reference.attr('href')) {
-      container.data('owlCarousel').removeItem(i - 1);
-      container.data('owlCarousel').goTo(i - 1);
+      container.data('owlCarousel').removeItem(i);
+      container.data('owlCarousel').goTo(i);
+
+      break;
     }
   }
 }
