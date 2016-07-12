@@ -360,8 +360,8 @@ autocomplete = function(id) {
     select: function(event, ui) {
       $("#" + id + ' h1').text(ui.item.title);
       $("#" + id + ' p').text(ui.item.summary);
+      $("#" + id + ' h2').text(ui.item.content_builder_category_id);
       $("#" + id + ' .feed__link').attr('href', '/noticias/categoria/' + ui.item.slug);
-      //$("#" + id + ' slide__link').text(ui.item.slug);
       return false;
     }
   }).autocomplete("instance")._renderItem = function( ul, item ) {

@@ -16,7 +16,16 @@ class RailsAdminFeaturedContentGenerator < Rails::Generators::Base
     @migration.to_s
   end
 
+  def create_uploader_featured_content_image_model
+    template "featured_content_image_uploader.rb", "app/uploaders/featured_content_image_uploader.rb"
+  end
+
+  def create_rails_admin_config_in_initializer
+    template "rails_admin_featured_content.rb", "config/initializers/rails_admin_featured_content.rb"
+  end
+
   def create_migrations
     migration_template "create_featured_content_migration.rb", File.join('db/migrate', "create_featured_contents.rb")
+    migration_template "create_featured_content_images_migration.rb", File.join('db/migrate', "create_featured_content_images.rb")
   end
 end
