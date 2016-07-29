@@ -61,7 +61,7 @@ Supported Asset Plugin
     CarrierWave
 
 
-## Usage
+## TODO
 
  - Tests :)
 
