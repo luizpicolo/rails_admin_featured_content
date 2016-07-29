@@ -51,8 +51,8 @@ In your show featured content view
 Dependencies
 
     MiniMagick
-    rails_admin
-    rails_admin_content_builder
+    Rails_admin
+    Rails_admin_content_builder
 
 Supported ORM
 
@@ -63,9 +63,9 @@ Supported Asset Plugin
     CarrierWave
 
 
-## Usage
+## TODO
 
-TODO: Write usage instructions here
+ - Tests :)
 
 ## Development
 
