@@ -1,1 +1,399 @@
-// JS Files
+//= require owl.carousel
+
+// when rails admin ready
+$(document).on('rails_admin.dom_ready', function() {
+  $('.fc-container').sortable({
+    revert: true,
+    placeholder: 'ui-sortable-placeholder',
+    handle: '.fc-tools__btn--move',
+    cursor: 'move',
+  });
+
+  $('.fc-item').each(function() {
+    autocomplete($(this).attr('id'));
+    addEventToInputFile($(this).attr('id'));
+  });
+
+  $('.fc-tools__input--upload').each(function() {
+    addEventToInputFile($(this).attr('id'));
+  });
+
+  $('.fc-form').on('submit', function(e) {
+    slideDestroy($('.fc-slide'));
+
+    var content = $('.fc-container').html();
+    $('#content').attr('value', content);
+  });
+
+  editable();
+  slideActive($('.fc-slide'));
+});
+
+// when click on tools buttons
+$(document).on('click', '.fc-tools__btn', function(e) {
+  e.preventDefault();
+});
+
+// when click on upload button
+$(document).on('click', '.fc-tools__btn--upload', function() {
+  $($(this).attr('href')).find('input').trigger('click');
+});
+
+// when click on slide add button
+$(document).on('click', '.fc-tools__btn--slide-add', function(e) {
+  slideAdd($(this).data('row'), $(this));
+});
+
+// when click on slide remove button
+$(document).on('click', '.fc-tools__btn--slide-remove', function(e) {
+  var resp = confirm('<%= I18n.t('admin.actions.featured_content.delete_block')%>');
+
+  if(resp) {
+    slideRemove($(this).data('row'), $(this));
+  }
+});
+
+// when click on delete button
+$(document).on('click', '.fc-tools__btn--delete', function() {
+  var resp = confirm('<%= I18n.t('admin.actions.featured_content.delete_block')%>');
+
+  if(resp) {
+    $($(this).attr('href')).remove();
+  }
+});
+
+// when click on snippet buttons
+$(document).on('click', '.fc-snippet__btn', function(e) {
+  e.preventDefault();
+
+  var snippet = $(this).attr('data-snippet');
+  var container = $('.fc-container');
+  var row_id = generateID();
+  var section_id = generateID();
+
+  switch (snippet) {
+    case '1':
+    var element = '<div id="'+ row_id +'" class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id + '"></a>';
+    element += '</div>';
+
+    element += '<section id="'+ section_id +'" class="fc-item fc-item--border">';
+    element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+    element += '<a href="#" class="fc-link fc-link--absolute"></a>';
+    element += '<h1 class="fc-title fc-title--highlight"></h1>';
+    element += '</section>';
+    element += '</div>';
+
+    container.append(element);
+    autocomplete(section_id);
+    scrollTo(row_id);
+    break;
+
+    case '2':
+    var element = '<div id="'+ row_id +'" class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
+    element += '</div>';
+
+    element += '<section id="'+ section_id +'" class="fc-item fc-item--border">';
+    element += '<a href="#" class="fc-link fc-link--absolute"></a>';
+    element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+    element += '<h1 class="fc-title fc-title--large"></h1>';
+    element += '<p class="fc-text"></p>';
+    element += '</section>';
+    element += '</div>';
+
+    container.append(element);
+    autocomplete(section_id);
+    scrollTo(row_id);
+    break;
+
+    case '3':
+    var sections = [];
+
+    var element = '<div id="'+ row_id +'" class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
+    element += '</div>';
+
+    element += '<div class="fc-item fc-item--border">';
+    element += '<div class="fc-slide">';
+    element += '<div class="fc-item fc-slide__owl" id="'+ section_id +'">';
+    element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+    element += '<div class="fc-slide__item">';
+    element += '<div class="fc-tools fc-tools--center">';
+    element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--slide-add fa fa-plus" data-row="'+ row_id +'" href="#'+ section_id +'"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--slide-remove fa fa-trash" data-row="'+ row_id +'" href="#'+ section_id +'"></a>';
+    element += '</div>';
+    element += '<a href="#" class="fc-link fc-slide__link"></a>';
+    element += '<h2 class="fc-caption fc-slide__caption"></h2>';
+    element += '<figure class="fc-slide__figure">';
+    element += '<img class="fc-slide__image" src="<%= image_url('cb-image-default.jpg') %>">';
+    element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+    element += '</figure>';
+    element += '<div class="fc-slide__content">';
+    element += '<h1 class="fc-title fc-slide__title"></h1>';
+    element += '<p class="fc-text fc-slide__text"></p>';
+    element += '</div>';
+    element += '</section>';
+    element += '</div>';
+    element += '</div>';
+    element += '</div>';
+    element += '</div>';
+
+    container.append(element);
+
+    autocomplete(section_id);
+    addEventToInputFile(section_id);
+    scrollTo(row_id);
+    slideActive($('.fc-slide'));
+    break;
+
+    case '4':
+    var sections = [];
+
+    var element = '<div id="'+ row_id +'" class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
+    element += '</div>';
+
+    element += '<div class="fc-row fc-row--flex">';
+
+    for(var i = 0; i < 3; i++) {
+      element += '<section id="'+ section_id +'" class="fc-item fc-item--three fc-item--border">';
+      element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+      element += '<a href="#" class="fc-link fc-link--absolute"></a>';
+      element += '<h2 class="fc-caption"></h2>';
+      element += '<figure class="fc-figure fc-figure--block fc-figure--large">';
+      element += '<img class="fc-image" src="<%= image_url('cb-image-default.jpg') %>">';
+      element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+      element += '<div class="fc-tools fc-tools--center">';
+      element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+      element += '</div>';
+      element += '</figure>';
+      element += '<h1 class="fc-title fc-title--small"></h1>';
+      element += '<p class="fc-text"></p>';
+      element += '</section>';
+
+      sections.push(section_id);
+      section_id = generateID();
+    }
+
+    element += '</div>';
+    element += '</div>';
+
+    container.append(element);
+
+    for(var i = 0; i < sections.length; i++) {
+      autocomplete(sections[i]);
+      addEventToInputFile(sections[i]);
+    }
+
+    scrollTo(row_id);
+    break;
+
+    case '5':
+    var sections = [];
+
+    var element = '<div id="'+ row_id +'" class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
+    element += '</div>';
+
+    element += '<div class="fc-row fc-row--flex">';
+
+    for(var i = 0; i < 2; i++) {
+      element += '<section id="'+ section_id +'" class="fc-item fc-item--two fc-item--border">';
+      element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+      element += '<a href="#" class="fc-link fc-link--absolute"></a>';
+      element += '<h2 class="fc-caption"></h2>';
+      element += '<figure class="fc-figure fc-figure--block fc-figure--large">';
+      element += '<img class="fc-image" src="<%= image_url('cb-image-default.jpg') %>">';
+      element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+      element += '<div class="fc-tools fc-tools--center">';
+      element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+      element += '</div>';
+      element += '</figure>';
+      element += '<h1 class="fc-title fc-title--small"></h1>';
+      element += '<p class="fc-text"></p>';
+      element += '</section>';
+
+      sections.push(section_id);
+      section_id = generateID();
+    }
+
+    element += '</div>';
+    element += '</div>';
+
+    container.append(element);
+
+    for(var i = 0; i < sections.length; i++) {
+      autocomplete(sections[i]);
+      addEventToInputFile(sections[i]);
+    }
+
+    scrollTo(row_id);
+    break;
+  }
+
+  editable();
+});
+
+// slide active
+var slideActive = function(container) {
+  if(container) {
+    container.owlCarousel({
+      singleItem: true,
+      slideSpeed: 500,
+      autoPlay: false,
+      stopOnHover: true,
+      paginationSpeed: 500,
+      rewindSpeed: 1000,
+      navigation: true,
+      touchDrag: false,
+      mouseDrag: false,
+      navigationText: ['&lsaquo;','&rsaquo;']
+    });
+  }
+};
+
+// slide destroy
+var slideDestroy = function(container) {
+  if(container.length) {
+    container.data('owlCarousel').destroy();
+  }
+}
+
+// slide add
+var slideAdd = function(row_id, reference) {
+  section_id = generateID();
+
+  var element = '<div class="fc-item fc-slide__owl" id="'+ section_id +'">';
+  element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+  element += '<div class="fc-slide__item">';
+  element += '<div class="fc-tools fc-tools--center">';
+  element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+  element += '<a class="fc-tools__btn fc-tools__btn--slide-add fa fa-plus" data-row="'+ row_id +'" href="#'+ section_id +'"></a>';
+  element += '<a class="fc-tools__btn fc-tools__btn--slide-remove fa fa-trash" data-row="'+ row_id +'" href="#'+ section_id +'"></a>';
+  element += '</div>';
+  element += '<a href="#" class="fc-link fc-slide__link"></a>';
+  element += '<h2 class="fc-caption fc-slide__caption"></h2>';
+  element += '<figure class="fc-slide__figure">';
+  element += '<img class="fc-slide__image" src="<%= image_url('cb-image-default.jpg') %>">';
+  element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+  element += '</figure>';
+  element += '<div class="fc-slide__content">';
+  element += '<h1 class="fc-title fc-slide__title"></h1>';
+  element += '<p class="fc-text fc-slide__text"></p>';
+  element += '</div>';
+  element += '</section>';
+  element += '</div>';
+  element += '</div>';
+
+  var container = $('#'+ row_id +'  .fc-slide');
+
+  container.data('owlCarousel').addItem(element, [0]);
+  container.data('owlCarousel').jumpTo(0);
+
+  autocomplete(section_id);
+  addEventToInputFile(section_id);
+  editable();
+}
+
+// slide remove
+var slideRemove = function(row_id, reference) {
+  var container = $('#'+ row_id +'  .fc-slide');
+  var items = $('#'+ row_id +'  .fc-slide__owl');
+
+  for(i = 0; i < items.length; i++) {
+    if('#' + items[i].id == reference.attr('href')) {
+      container.data('owlCarousel').removeItem(i);
+      container.data('owlCarousel').jumpTo(i);
+
+      break;
+    }
+  }
+}
+
+// add event on input file
+var addEventToInputFile = function(id) {
+  $('#' + id + ' input:file').on('change', fileSelectAndUpload);
+};
+
+// upload file via ajax
+var fileSelectAndUpload = function(evt) {
+  var file = evt.target.files[0];
+
+  if(file) {
+    var formData = new FormData();
+    formData.append('featured_content_image', file);
+
+    $.ajax({
+      url: 'create_images',
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'PUT',
+      beforeSend: function() {
+        $('#' + evt.target.id).find('figure').append('<div class="fc-loading"></div>');
+        $('.fc-tools--center').addClass('fc-tools--disabled');
+      },
+      complete: function(){
+        $('.fc-loading').remove();
+        $('.fc-tools--center').removeClass('fc-tools--disabled');
+      }
+    }).done(function(e) {
+      $('#' + evt.target.id).find('img').attr('src', e.image.thumb.url);
+    }).fail(function(e) {
+      alert('error: ' + e);
+    });
+  }
+};
+
+// scroll to
+var scrollTo = function(id) {
+  if(id) {
+    $('html, body').animate({
+      scrollTop: $('#' + id).offset().top
+    }, 400);
+  }
+};
+
+// generate random id
+var generateID = function() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+};
+
+// content editable
+var editable = function() {
+  $('.fc-title').attr('contenteditable', 'true');
+  $('.fc-text').attr('contenteditable', 'true');
+  $('.fc-caption').attr('contenteditable', 'true');
+}
+
+autocomplete = function(id) {
+  $('#' + id + ' input:text').autocomplete({
+    source: "search_content",
+    minLength: 5,
+    select: function(event, ui) {
+      console.log(ui.item);
+      $("#" + id + ' .fc-title').text(ui.item.title);
+      $("#" + id + ' .fc-text').text(ui.item.summary);
+      $("#" + id + ' .fc-caption').text(ui.item.content_builder_category.name);
+      $("#" + id + ' .fc-link').attr('href', '/noticias/'+ ui.item.content_builder_category.slug +'/' + ui.item.slug);
+      return false;
+    }
+  }).autocomplete("instance")._renderItem = function(ul, item) {
+    return $( "<li>" )
+        .append( "<a>" + item.title + "</a>" )
+        .appendTo( ul );
+  };
+};

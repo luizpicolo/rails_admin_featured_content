@@ -1,0 +1,7 @@
+Rails.application.config.assets.precompile += %w( fc-loading.svg )
+Rails.application.config.assets.precompile += %w( fc-image-default.jpg )
+Rails.application.config.assets.precompile += %w( fc-snippet-highlight.jpg )
+Rails.application.config.assets.precompile += %w( fc-snippet-slide.jpg )
+Rails.application.config.assets.precompile += %w( fc-snippet-text.jpg )
+Rails.application.config.assets.precompile += %w( fc-snippet-three.jpg )
+Rails.application.config.assets.precompile += %w( fc-snippet-two.jpg )

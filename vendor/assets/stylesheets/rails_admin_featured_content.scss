@@ -1,0 +1,557 @@
+// fc
+
+.fc {
+
+}
+
+.fc-row {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.fc-date {
+  color: lighten(#111, 50%);
+  font-size: .7em;
+
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
+  border-bottom: solid .1rem rgba(#111, .06);
+}
+
+.fc-item {
+  position: relative;
+
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.fc-item--border {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+
+  border-bottom: solid 1px rgba(#111, .05);
+}
+
+.fc-link {
+  display: block;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    .fc-title {
+      text-decoration: underline;
+    }
+
+    .fc-title--highlight {
+      color: #fff;
+    }
+  }
+}
+
+.fc-link--absolute {
+  position: absolute;
+  z-index: 40;
+  top: 0;
+  left: 0;
+
+  display: block;
+  width: 100%;
+  height: calc(100% - 1.5rem);
+
+  &:hover,
+  &:focus {
+    ~ .fc-title {
+      text-decoration: underline;
+    }
+
+    ~ .fc-title--highlight {
+      color: #fff;
+    }
+  }
+}
+
+.fc-figure {
+  margin: .25rem 1rem 0 0;
+  float: left;
+
+  width: 6rem;
+  height: 4.5rem;
+  border-radius: 4px;
+
+  overflow: hidden;
+}
+
+.fc-image {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.fc-content {
+  height: 9rem;
+  overflow: hidden;
+}
+
+.fc-time {
+  line-height: 1.6;
+
+  float: right;
+  color: darken(#fff, 40%);
+  font-size: .75em;
+}
+
+.fc-time--block {
+  float: none;
+  margin-bottom: .4rem;
+
+  display: block;
+}
+
+.fc-caption {
+  color: lighten(#111, 40%);
+  font-size: .75em;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  margin: 0 0 .5rem;
+}
+
+.fc-title {
+  line-height: 1.3;
+
+  color: lighten(#000, 25%);
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: -.04rem;
+
+  margin: 0;
+}
+
+.fc-title--highlight {
+  padding: .6rem;
+  background: #222;
+
+  color: #fff;
+  font-size: .8em;
+}
+
+.fc-text {
+  line-height: 1.4;
+
+  color: lighten(#111, 30%);
+  font-size: .8em;
+
+  margin: .5rem 0 0;
+
+  overflow: hidden;
+}
+
+
+@media screen and (min-width: 460px) {
+  .fc-figure {
+    width: 9rem;
+    height: 6.2rem;
+  }
+
+  .fc-caption {
+    font-size: .8em;
+  }
+
+  .fc-text {
+    font-size: .9em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .fc-row--flex {
+    display: flex;
+  }
+
+  .fc-item--border {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .fc-item--two {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 48.21067%;
+
+    &:nth-child(2n+1) {
+      clear: left;
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  .fc-item--three {
+    float: left;
+    display: block;
+    margin-right: 3.16844%;
+    width: 31.22104%;
+
+    &:nth-child(3n+1) {
+      clear: left;
+    }
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  .fc-item--four {
+    float: left;
+    display: block;
+    margin-right: 3.57866%;
+    width: 22.316%;
+
+    &:nth-child(4n+1) {
+      clear: left;
+    }
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  .fc-date {
+    font-size: .9em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .fc-title {
+    line-height: 1.4;
+    font-size: 1.2em;
+  }
+
+  .fc-title--small {
+    font-size: 1em;
+  }
+
+  .fc-title--large {
+    line-height: 1.3;
+    font-size: 1.6em;
+  }
+
+  .fc-title--highlight {
+    font-size: 1.1em;
+    padding: .6rem .9rem .7rem;
+  }
+
+  .fc-figure--block {
+    float: none;
+    width: 100%;
+    margin: 0 1rem .5rem 0;
+
+    .fc-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .fc-figure--small {
+    height: 4rem;
+  }
+
+  .fc-figure--large {
+    height: 8rem;
+  }
+}
+
+// fc slide
+
+.fc-slide {
+  .owl-controls {
+    .owl-buttons {
+      display: none;
+    }
+
+    .owl-pagination {
+      margin-top: .5rem;
+      text-align: center;
+    }
+
+    .owl-page {
+      display: inline-block;
+      opacity: .6;
+
+      span {
+        display: block;
+
+        width: .5rem;
+        height: .5rem;
+        margin: 0 .2rem;
+        background: #999;
+        border-radius: 100%;
+      }
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
+
+    .owl-page.active {
+      opacity: 1;
+    }
+  }
+}
+
+.fc-slide__item {
+  position: relative;
+  overflow: hidden;
+}
+
+.fc-slide__link {
+  position: absolute;
+  z-index: 40;
+  top: 0;
+  left: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  text-decoration: none;
+}
+
+.fc-slide__title {
+  margin: 0;
+
+  color: lighten(#000, 25%);
+  font-size: 1em;
+  letter-spacing: -.03em;
+  line-height: 1.4;
+}
+
+.fc-slide__text {
+  margin: .5rem 0 0;
+
+  max-height: 2.6rem;
+
+  color: lighten(#000, 25%);
+  font-size: .8em;
+  line-height: 1.6;
+
+  overflow: hidden;
+}
+
+.fc-slide__caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  margin: 0;
+
+  color: #fff;
+  font-size: .8em;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem;
+
+  &:after {
+    content: "";
+
+    position: absolute;
+    bottom: .5rem;
+    left: 1rem;
+
+    display: block;
+    width: 3rem;
+    height: .2rem;
+
+    background: #333;
+  }
+}
+
+.fc-slide__figure {
+  position: relative;
+  z-index: -1;
+  margin: 0 0 .5rem;
+
+  width: 100%;
+  height: 0;
+  border-radius: 4px;
+  padding-bottom: 60%;
+
+  overflow: hidden;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  &:before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: .9;
+    background: rgba(#000, .4);
+    background-size: 120%;
+    border-radius: 4px;
+  }
+}
+
+.fc-slide__image {
+  width: 100%;
+  min-height: 100%;
+
+  transition: .3s ease;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+}
+
+
+@media screen and (min-width: 480px) {
+  .fc-slide__title {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .fc-slide {
+    .owl-controls {
+      margin: .25rem 0 0;
+
+      .owl-pagination {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        z-index: 30;
+
+        padding: 1.2rem 1rem;
+      }
+
+      .owl-buttons {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        display: block;
+        padding: .7rem .5rem;
+
+        div {
+          opacity: .6;
+
+          display: inline-block;
+          width: 2.5rem;
+          height: 2.5rem;
+          line-height: 2.5rem;
+          opacity: 1;
+
+          color: #fff;
+          font-size: 1.4em;
+          text-align: center;
+
+          padding: 0;
+          margin: 0;
+
+          background: none;
+          border-radius: 0;
+
+          &:hover,
+          &:focus {
+            opacity: .7 !important;
+          }
+        }
+      }
+
+      .owl-page {
+        span {
+          background: #fff;
+        }
+      }
+    }
+  }
+
+  .fc-slide__link {
+    &:hover,
+    &:focus {
+      ~ .fc-slide__figure {
+        .fc-slide__image {
+          transform: scale(1.04);
+          -webkit-transform: scale(1.04);
+          -moz-transform: scale(1.04);
+        }
+      }
+    }
+  }
+
+  .fc-slide__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    margin: 2rem;
+  }
+
+  .fc-slide__caption {
+    font-size: 1em;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+    padding: 2rem;
+
+    &:after {
+      bottom: 1.2rem;
+      left: 2rem;
+    }
+  }
+
+  .fc-slide__title {
+    line-height: 1.3;
+    color: #fff;
+    font-size: 1.6em;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.6);
+  }
+
+  .fc-slide__text {
+    max-height: none;
+    color: #fff;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.6);
+  }
+
+  .fc-slide__figure {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .fc-slide__title {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .fc-slide__title {
+    font-size: 2em;
+  }
+}

@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'sqlite3'
+  gem 'rails_admin'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rails_admin_content_builder', git: 'git://github.com/luizpicolo/rails_admin_content_builder.git'
+  gem 'rails_admin_featured_content', path: '../../'
+end
