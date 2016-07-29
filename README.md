@@ -6,6 +6,8 @@ Easy way for create featured contents using rails_admin
 
 ## Installation
 
+**Test with rails < 5 and TurboLink < 5**
+
 Add this line to your application's Gemfile:
 This is a complement to the gem rails_admin_content_builder, only works with dependencies lists in requirements and not alone
 
