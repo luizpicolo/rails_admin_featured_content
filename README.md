@@ -1,8 +1,10 @@
 # RailsAdminFeaturedContent
 
-![Work in progress](http://messages.hellobits.com/warning.svg?message=Work%20in%20progress)
-
 Easy way for create featured contents using rails_admin
+
+## Importante
+
+First make sure that the gem [rails_admin_content_builder](https://github.com/luizpicolo/rails_admin_content_builder) is installed and working properly
 
 ## Installation
 
@@ -12,8 +14,7 @@ Add this line to your application's Gemfile:
 This is a complement to the gem rails_admin_content_builder, only works with dependencies lists in requirements and not alone
 
 ```ruby
-gem 'rails_admin'
-gem 'rails_admin_content_builder'
+gem 'owlcarousel-rails' # For slides
 gem 'rails_admin_featured_content'
 ```
 
@@ -23,13 +24,43 @@ And then execute:
 
 Run the generator and migrations
 
-    rails g rails_admin_content_builder
+    rails g rails_admin_featured_content
     rake db:migrate
 
-Add styles in app/assets/application.scss
+Add styles in app/assets/stylesheets/application.scss
 
 ```ruby
 *= require rails_admin_featured_content
+*= require owl.carousel
+*= require owl.theme
+```
+
+Add Javascript in app/assets/javascripts/application.js
+
+```ruby
+//= require owl.carousel
+```
+
+```javascript
+$(document).ready(function() {
+  $(".fc-slide").owlCarousel({
+    autoPlay: 7000,
+    singleItem: true,
+    stopOnHover: true,
+    slideSpeed: 500,
+    paginationSpeed: 500,
+    rewindSpeed: 1000,
+    navigation: true,
+    navigationText: ['<span class="ion-chevron-left"></span>','<span class="ion-chevron-right"></span>']
+  });
+});
+
+```
+
+And, add in view/layouts/application.html.erb (optional)
+
+```html
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
 ```
 
 ## Usage
