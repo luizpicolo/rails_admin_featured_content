@@ -1,5 +1,7 @@
 # RailsAdminFeaturedContent
 
+[![Gem Version](https://badge.fury.io/rb/rails_admin_content_builder.svg)](https://badge.fury.io/rb/rails_admin_content_builder)
+
 Easy way for create featured contents using rails_admin
 
 ## Importante
@@ -76,6 +78,13 @@ In your show featured content view
 ```ruby
 <%= @featured.featured_sanitized %>
 ```
+
+# Demonstration
+
+Featured Content:
+[link](https://example-cb-fc.herokuapp.com/)    
+Rails Admin: 
+[link](https://example-cb-fc.herokuapp.com/admin/rails_admin_featured_content~featured_content/1/featured_content)
 
 ## Requirements
 
