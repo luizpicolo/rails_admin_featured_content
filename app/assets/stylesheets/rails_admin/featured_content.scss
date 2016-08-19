@@ -582,12 +582,8 @@ h2.fc-slide__caption {
 
 .fc-slide__image {
   position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  transform: translateX(-50%);
-
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
 }
 
 .fc-slide__link {

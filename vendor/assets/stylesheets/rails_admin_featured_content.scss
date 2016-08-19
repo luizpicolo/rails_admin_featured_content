@@ -425,13 +425,9 @@
 
 .fc-slide__image {
   position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  transform: translateX(-50%);
-
   display: block;
-  height: 100%;
+  width: 100%;
+  min-height: 100%;
 
   -webkit-transition: transform .3s ease;
   -moz-transition: transform .3s ease;
@@ -505,9 +501,9 @@
     &:focus {
       ~ .fc-slide__figure {
         .fc-slide__image {
-          -webkit-transform: translateX(-50%) scale(1.04);
-          -moz-transform: translateX(-50%) scale(1.04);
-          transform: translateX(-50%) scale(1.04);
+          -webkit-transform: scale(1.04);
+          -moz-transform: scale(1.04);
+          transform: scale(1.04);
         }
       }
     }
