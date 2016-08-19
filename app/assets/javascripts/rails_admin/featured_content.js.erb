@@ -247,7 +247,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 });
 
 // slide active
-var slideActive = function(container) {
+ function slideActive(container) {
   if(container) {
     container.owlCarousel({
       singleItem: true,
@@ -265,14 +265,14 @@ var slideActive = function(container) {
 };
 
 // slide destroy
-var slideDestroy = function(container) {
+function slideDestroy(container) {
   if(container.length) {
     container.data('owlCarousel').destroy();
   }
 }
 
 // slide add
-var slideAdd = function(row_id, reference) {
+function slideAdd(row_id, reference) {
   section_id = generateID();
 
   var element = '<div class="fc-item fc-slide__owl" id="'+ section_id +'">';
@@ -308,7 +308,7 @@ var slideAdd = function(row_id, reference) {
 }
 
 // slide remove
-var slideRemove = function(row_id, reference) {
+function slideRemove(row_id, reference) {
   var container = $('#'+ row_id +'  .fc-slide');
   var items = $('#'+ row_id +'  .fc-slide__owl');
 
@@ -323,12 +323,12 @@ var slideRemove = function(row_id, reference) {
 }
 
 // add event on input file
-var addEventToInputFile = function(id) {
+function addEventToInputFile(id) {
   $('#' + id + ' input:file').on('change', fileSelectAndUpload);
 };
 
 // upload file via ajax
-var fileSelectAndUpload = function(evt) {
+function fileSelectAndUpload(evt) {
   var file = evt.target.files[0];
 
   if(file) {
@@ -359,7 +359,7 @@ var fileSelectAndUpload = function(evt) {
 };
 
 // scroll to
-var scrollTo = function(id) {
+function scrollTo(id) {
   if(id) {
     $('html, body').animate({
       scrollTop: $('#' + id).offset().top
@@ -368,18 +368,18 @@ var scrollTo = function(id) {
 };
 
 // generate random id
-var generateID = function() {
+function generateID() {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
 
 // content editable
-var editable = function() {
+function editable() {
   $('.fc-title').attr('contenteditable', 'true');
   $('.fc-text').attr('contenteditable', 'true');
   $('.fc-caption').attr('contenteditable', 'true');
 }
 
-autocomplete = function(id) {
+ function autocomplete(id) {
   $('#' + id + ' input:text').autocomplete({
     source: "search_content",
     minLength: 5,
