@@ -6,11 +6,11 @@ require 'rails_admin_featured_content/version'
 Gem::Specification.new do |spec|
   spec.name          = "rails_admin_featured_content"
   spec.version       = RailsAdminFeaturedContent::VERSION
-  spec.authors       = ["Luiz Picolo"]
-  spec.email         = ["luizpicolo@gmail.com"]
+  spec.authors       = ["Luiz Picolo", "Gabriel Medina"]
+  spec.email         = ["luizpicolo@gmail.com", "gmedina.santos@gmail.com"]
 
-  spec.summary       = "Summary"
-  spec.description   = "Description"
+  spec.summary       = "Easy way for create featured contents using rails_admin"
+  spec.description   = "Easy way for create featured contents using rails_admin"
   spec.homepage      = "http://github.com/luizpicolo/rails_admin_featured_content"
   spec.license       = "MIT"
 
