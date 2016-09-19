@@ -4,7 +4,11 @@
 
 Easy way for create featured contents using rails_admin
 
-## Importante
+## Preview
+
+![preview](https://raw.githubusercontent.com/luizpicolo/rails_admin_featured_content/master/screenshots/image-1.png)
+
+## Important
 
 First make sure that the gem [rails_admin_content_builder](https://github.com/luizpicolo/rails_admin_content_builder) is installed and working properly
 
@@ -83,7 +87,7 @@ In your show featured content view
 
 Featured Content:
 [link](https://example-cb-fc.herokuapp.com/)    
-Rails Admin: 
+Rails Admin:
 [link](https://example-cb-fc.herokuapp.com/admin/rails_admin_featured_content~featured_content/1/featured_content)
 
 ## Requirements
