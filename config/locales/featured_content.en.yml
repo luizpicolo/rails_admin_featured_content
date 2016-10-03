@@ -15,3 +15,9 @@ en:
           save: "Save"
           publish: "Publish"
           unpublish: 'Unpublish'
+        snippet:
+          targe: "Targe"
+          title_large: "Title large"
+          slide: "Slide"
+          list_two: "List with two"
+          list_three: "List with three"

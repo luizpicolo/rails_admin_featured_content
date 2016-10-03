@@ -25,20 +25,35 @@
 }
 
 .fc-snippet__btn {
-  display: block;
-  text-decoration: none;
   margin-bottom: 20px;
+
+  display: block;
+  background: #fff;
+
+  text-align: center;
+  text-decoration: none;
 
   transition: box-shadow .1s ease;
 
   &:hover {
+    text-decoration: none;
     box-shadow: 0 0 0 2px rgba(0,0,0,.1);
   }
+}
+
+.fc-snippet__caption {
+  display: block;
+  padding: 5px;
+  border-top: solid 2px rgba(0,0,0,.05);
+
+  color: rgba(0,0,0,.6);
+  font-size: 10px;
 }
 
 .fc-snippet__image {
   width: 100%;
 }
+
 
 .fc-controls {
   position: fixed;
