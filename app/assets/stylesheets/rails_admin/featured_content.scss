@@ -79,7 +79,7 @@
 }
 
 .fc-tools--disabled {
-  z-index: 100;
+  z-index: -1;
 }
 
 .fc-tools__btn {
@@ -108,7 +108,7 @@
 
 
 .fc-container {
-  width: 777px;
+  width: 780px;
   padding: 0 0 0 40px;
 }
 
@@ -137,7 +137,7 @@
 
 .fc-loading {
   position: absolute;
-  z-index: 200;
+  z-index: 400;
   top: 0;
   left: 0;
 
@@ -237,8 +237,8 @@
 }
 
 .fc-item--border {
-  margin-bottom: 16px;
-  padding-bottom: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
 
   border-bottom: solid 1px rgba(#111, .06);
 }
@@ -303,7 +303,7 @@
   background: #333;
 
   color: #fff !important;
-  font-size: 19px !important;
+  font-size: 17px !important;
 }
 
 .fc-text {
@@ -338,7 +338,7 @@
 
   .fc-title--large {
     line-height: 1.3;
-    font-size: 26px;
+    font-size: 25px;
   }
 
   .fc-text {

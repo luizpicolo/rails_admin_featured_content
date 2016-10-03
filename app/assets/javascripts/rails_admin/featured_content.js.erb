@@ -330,6 +330,7 @@ function addEventToInputFile(id) {
 // upload file via ajax
 function fileSelectAndUpload(evt) {
   var file = evt.target.files[0];
+  var container = $('#' + evt.target.id);
 
   if(file) {
     var formData = new FormData();
@@ -343,15 +344,15 @@ function fileSelectAndUpload(evt) {
       processData: false,
       type: 'PUT',
       beforeSend: function() {
-        $('#' + evt.target.id).find('figure').append('<div class="fc-loading"></div>');
-        $('.fc-tools--center').addClass('fc-tools--disabled');
+        container.find('figure').append('<div class="fc-loading"></div>');
+        container.find($('.fc-tools--center')).addClass('fc-tools--disabled');
       },
       complete: function(){
         $('.fc-loading').remove();
         $('.fc-tools--center').removeClass('fc-tools--disabled');
       }
     }).done(function(e) {
-      $('#' + evt.target.id).find('img').attr('src', e.image.thumb.url);
+      container.find('img').attr('src', e.image.thumb.url);
     }).fail(function(e) {
       alert('error: ' + e);
     });
