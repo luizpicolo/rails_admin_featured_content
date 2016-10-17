@@ -244,11 +244,6 @@
     clear: both;
     height: 0;
   }
-
-  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: 'Open Sans', sans-serif !important;
-    font-weight: 700 !important;
-  }
 }
 
 .fc-item--border {
@@ -294,8 +289,7 @@
 
 .fc-caption {
   color: lighten(#111, 40%);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
 
   margin: 0 0 10px;
@@ -526,7 +520,7 @@
     width: 48px;
     height: 3px;
 
-    background: #444;
+    background: rgba(#fff, .7);
   }
 }
 
@@ -554,7 +548,7 @@ h2.fc-slide__caption {
   margin: 8px 0 0;
 
   width: 100% !important;
-  color: #fff;
+  color: rgba(#fff, .8);
   font-size: 19px;
   line-height: 1.6;
 
