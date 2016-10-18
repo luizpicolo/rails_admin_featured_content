@@ -19,10 +19,10 @@
   color: lighten(#111, 50%);
   font-size: .7em;
 
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
 
-  border-bottom: solid .1rem rgba(#111, .06);
+  border-bottom: solid .1em rgba(#111, .06);
 }
 
 .fc-item {
@@ -39,8 +39,8 @@
 }
 
 .fc-item--border {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
 
   border-bottom: solid 1px rgba(#111, .05);
 }
@@ -75,7 +75,7 @@
 
   display: block;
   width: 100%;
-  height: calc(100% - 1rem);
+  height: calc(100% - 1em);
 
   &:hover,
   &:focus {
@@ -90,11 +90,11 @@
 }
 
 .fc-figure {
-  margin: .25rem 1rem 0 0;
+  margin: 0 1em 0 0;
   float: left;
 
-  width: 6rem;
-  height: 4.5rem;
+  width: 6em;
+  height: 4.5em;
   border-radius: 4px;
 
   overflow: hidden;
@@ -106,7 +106,7 @@
 }
 
 .fc-content {
-  height: 9rem;
+  height: 9em;
   overflow: hidden;
 }
 
@@ -120,7 +120,7 @@
 
 .fc-time--block {
   float: none;
-  margin-bottom: .4rem;
+  margin-bottom: .4em;
 
   display: block;
 }
@@ -131,22 +131,22 @@
   font-weight: 400;
   text-transform: uppercase;
 
-  margin: 0 0 .5rem;
+  margin: 0 0 .5em;
 }
 
 .fc-title {
   line-height: 1.3;
 
-  color: lighten(#000, 25%);
+  color: rgba(#000, .7);
   font-size: .9em;
   font-weight: 700;
-  letter-spacing: -.04rem;
+  letter-spacing: -.04em;
 
   margin: 0;
 }
 
 .fc-title--highlight {
-  padding: .6rem;
+  padding: .6em;
   background: #222;
 
   color: #fff;
@@ -159,7 +159,7 @@
   color: lighten(#111, 40%);
   font-size: .75em;
 
-  margin: .5rem 0 0;
+  margin: .5em 0 0;
 
   overflow: hidden;
 }
@@ -167,8 +167,8 @@
 
 @media screen and (min-width: 460px) {
   .fc-figure {
-    width: 9rem;
-    height: 6.2rem;
+    width: 9em;
+    height: 6.2em;
   }
 
   .fc-text {
@@ -182,8 +182,8 @@
   }
 
   .fc-item--border {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
   }
 
   .fc-item--two {
@@ -232,13 +232,13 @@
   }
 
   .fc-link--absolute {
-    height: calc(100% - 1.5rem);
+    height: calc(100% - 1.5em);
   }
 
   .fc-date {
     font-size: .9em;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
   }
 
   .fc-title {
@@ -257,13 +257,13 @@
 
   .fc-title--highlight {
     font-size: 1.1em;
-    padding: .6rem .9rem .7rem;
+    padding: .6em .9em .7em;
   }
 
   .fc-figure--block {
     position: relative;
     float: none;
-    margin: 0 1rem .5rem 0;
+    margin: 0 1em .5em 0;
 
     width: 100%;
     height: 0;
@@ -312,7 +312,7 @@
     }
 
     .owl-pagination {
-      margin-top: .5rem;
+      margin-top: .5em;
       text-align: center;
     }
 
@@ -323,9 +323,9 @@
       span {
         display: block;
 
-        width: .5rem;
-        height: .5rem;
-        margin: 0 .2rem;
+        width: .5em;
+        height: .5em;
+        margin: 0 .2em;
         background: #999;
         border-radius: 100%;
       }
@@ -363,20 +363,20 @@
 .fc-slide__title {
   margin: 0;
 
-  color: lighten(#000, 25%);
+  color: rgba(#000, .7);
   font-size: .9em;
   letter-spacing: -.03em;
   line-height: 1.4;
 }
 
 .fc-slide__text {
-  margin: .5rem 0 0;
+  margin: .5em 0 0;
 
-  line-height: 1.6;
-  max-height: 2.6rem;
+  line-height: 1.4;
+  max-height: 2.8em;
 
-  color: lighten(#111, 40%);
-  font-size: .75em;
+  color: rgba(#000, .6);
+  font-size: .9em;
 
   overflow: hidden;
 }
@@ -392,18 +392,18 @@
 
   box-sizing: border-box;
   width: 100%;
-  padding: 0 0 1rem;
+  padding: 0 0 1em;
 
   &:after {
     content: "";
 
     position: absolute;
-    bottom: .5rem;
+    bottom: .5em;
     left: 0;
 
     display: block;
-    width: 3rem;
-    height: .2rem;
+    width: 3em;
+    height: .2em;
 
     background: #666;
   }
@@ -412,7 +412,7 @@
 .fc-slide__figure {
   position: relative;
   z-index: -1;
-  margin: 0 0 .5rem;
+  margin: 0 0 .5em;
 
   width: 100%;
   height: 0;
@@ -432,6 +432,10 @@
 
 
 @media screen and (min-width: 480px) {
+  .fc-title {
+    font-size: 1em;
+  }
+
   .fc-slide__title {
     font-size: 1.2em;
   }
@@ -447,7 +451,7 @@
         margin: 0;
         z-index: 30;
 
-        padding: 1.2rem 1rem;
+        padding: 1.2em 1em;
       }
 
       .owl-buttons {
@@ -456,15 +460,15 @@
         right: 0;
 
         display: block;
-        padding: .7rem .5rem;
+        padding: .7em .5em;
 
         div {
           opacity: .6;
 
           display: inline-block;
-          width: 2.5rem;
-          height: 2.5rem;
-          line-height: 2.5rem;
+          width: 2.5em;
+          height: 2.5em;
+          line-height: 2.5em;
           opacity: 1;
 
           color: #fff;
@@ -510,7 +514,7 @@
     bottom: 0;
     left: 0;
     z-index: 20;
-    margin: 2rem;
+    margin: 2em;
   }
 
   .fc-slide__caption {
@@ -519,15 +523,15 @@
     left: 0;
 
     display: block;
-    padding: 2rem;
+    padding: 2em;
 
     color: #fff;
     font-size: 1em;
     text-shadow: 1px 1px 0 rgba(0,0,0,.5);
 
     &:after {
-      bottom: 1.2rem;
-      left: 2rem;
+      bottom: 1.2em;
+      left: 2em;
 
       background: #fff;
     }
