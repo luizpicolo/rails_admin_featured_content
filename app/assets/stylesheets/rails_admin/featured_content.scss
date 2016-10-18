@@ -410,36 +410,34 @@
   }
 
   .fc-figure--block {
+    position: relative;
     float: none;
+    margin: 0 1rem .5rem 0;
+
     width: 100%;
-    margin: 0 16px 10px 0;
+    height: 0;
+    padding-bottom: 50%;
 
     .fc-image {
+      position: absolute;
+      top: 50%;
+      left: 0;
+
       width: 100%;
       height: auto;
+
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      transform: translateY(-50%);
     }
   }
 
   .fc-figure--small {
-    height: 64px;
+    padding-bottom: 40%;
   }
 
   .fc-figure--large {
-    height: 128px;
-  }
-
-  .fc-figure--clip {
-    .fc-figure {
-      width: 160px;
-    }
-
-    .fc-figure--small {
-      width: 96px;
-    }
-
-    .fc-figure--large {
-      width: 224px;
-    }
+    padding-bottom: 60%;
   }
 }
 

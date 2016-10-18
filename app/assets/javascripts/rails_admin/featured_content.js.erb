@@ -249,25 +249,29 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 // slide active
  function slideActive(container) {
   if(container) {
-    container.owlCarousel({
-      singleItem: true,
-      slideSpeed: 500,
-      autoPlay: false,
-      stopOnHover: true,
-      paginationSpeed: 500,
-      rewindSpeed: 1000,
-      navigation: true,
-      touchDrag: false,
-      mouseDrag: false,
-      navigationText: ['&lsaquo;','&rsaquo;']
-    });
+    for(var i = 0; i < container.length; i++) {
+      $(container[i]).owlCarousel({
+        singleItem: true,
+        slideSpeed: 500,
+        autoPlay: false,
+        stopOnHover: true,
+        paginationSpeed: 500,
+        rewindSpeed: 1000,
+        navigation: true,
+        touchDrag: false,
+        mouseDrag: false,
+        navigationText: ['&lsaquo;','&rsaquo;']
+      });
+    }
   }
 };
 
 // slide destroy
 function slideDestroy(container) {
   if(container.length) {
-    container.data('owlCarousel').destroy();
+    for(var i = 0; i < container.length; i++) {
+      $(container[i]).data('owlCarousel').destroy();
+    }
   }
 }
 
