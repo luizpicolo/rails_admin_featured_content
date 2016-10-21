@@ -24,16 +24,23 @@
   <% end %>
 
   <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '4'} do %>
+    <%= image_tag 'fc-snippet-two.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.list_two') %>
+    </span>
+  <% end %>
+
+  <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '5'} do %>
     <%= image_tag 'fc-snippet-three.jpg', class: 'fc-snippet__image' %>
     <span class="fc-snippet__caption">
       <%= t('admin.actions.featured_content.snippet.list_three') %>
     </span>
   <% end %>
 
-  <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '5'} do %>
-    <%= image_tag 'fc-snippet-two.jpg', class: 'fc-snippet__image' %>
+  <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '6'} do %>
+    <%= image_tag 'fc-snippet-four.jpg', class: 'fc-snippet__image' %>
     <span class="fc-snippet__caption">
-      <%= t('admin.actions.featured_content.snippet.list_two') %>
+      <%= t('admin.actions.featured_content.snippet.list_four') %>
     </span>
   <% end %>
 </div>
