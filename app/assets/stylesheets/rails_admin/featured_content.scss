@@ -79,33 +79,29 @@
 }
 
 .fc-tools {
-  position: absolute;
-  z-index: 300;
-  top: 0;
-  left: -40px;
+  margin-bottom: 10px;
 
-  border-radius: .4em;
+  border-radius: .4rem;
   background: darken(#fff, 7%);
-
   overflow: hidden;
+
+  text-align: right;
 }
 
 .fc-tools--center {
+  position: absolute;
+  z-index: 300;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-
-  .fc-tools__btn {
-    display: inline-block;
-  }
 }
 
 .fc-tools--disabled {
-  z-index: -1;
+  z-index: 100;
 }
 
 .fc-tools__btn {
-  display: block;
+  display: inline-block;
 
   font-size: 12px;
   text-align: center;
@@ -120,6 +116,10 @@
   }
 }
 
+.fc-tools__btn--delete {
+  float: left;
+}
+
 .fc-tools__input {
 
 }
@@ -130,7 +130,7 @@
 
 .fc-container {
   box-sizing: border-box;
-  padding: 0 0 300px 40px;
+  padding: 0 0 300px 0;
 }
 
 .fc-content {
@@ -314,6 +314,7 @@
 .fc-title--highlight {
   padding: 8px;
   background: #333;
+  border-radius: 4px;
 
   color: #fff !important;
   font-size: 17px !important;
@@ -383,6 +384,28 @@
     padding: 0;
   }
 
+  .fc-tools {
+    position: absolute;
+    z-index: 300;
+    top: 0;
+    left: -40px;
+  }
+
+  .fc-tools__btn {
+    display: block;
+  }
+
+  .fc-tools--center {
+    position: absolute;
+    z-index: 300;
+    top: 50%;
+    left: 50%;
+
+    .fc-tools__btn {
+      display: inline-block;
+    }
+  }
+
   .fc-controls {
     position: fixed;
     z-index: 100;
@@ -413,7 +436,9 @@
 
   .fc-container {
     box-sizing: border-box;
-    padding: 0 220px 100px 40px;
+    padding: 30px 160px 100px 40px;
+    width: 80%;
+    margin: 0 auto;
   }
 
   .fc-row--flex {
@@ -624,7 +649,7 @@ h2.fc-slide__caption {
 
   width: 100%;
   height: 0;
-  border-radius: 6px;
+  border-radius: 4px;
   padding-bottom: 60%;
 
   overflow: hidden;
