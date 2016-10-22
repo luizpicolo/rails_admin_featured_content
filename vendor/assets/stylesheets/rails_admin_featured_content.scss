@@ -45,6 +45,12 @@
   border-bottom: solid 1px rgba(#111, .05);
 }
 
+.fc-item--last-borderless {
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
 .fc-link {
   display: block;
   text-decoration: none;
@@ -69,7 +75,7 @@
 
   display: block;
   width: 100%;
-  height: calc(100% - 1.5rem);
+  height: calc(100% - 1rem);
 
   &:hover,
   &:focus {
@@ -229,6 +235,10 @@
     }
   }
 
+  .fc-link--absolute {
+    height: calc(100% - 1.5rem);
+  }
+
   .fc-date {
     font-size: .9em;
     margin-bottom: 1.5rem;
@@ -364,6 +374,7 @@
 }
 
 .fc-slide__caption {
+  display: none;
   position: relative;
 
   color: #666;
@@ -386,7 +397,7 @@
     width: 3rem;
     height: .2rem;
 
-    background: rgba(#fff, .7);
+    background: #666;
   }
 }
 
@@ -499,6 +510,7 @@
     top: 0;
     left: 0;
 
+    display: block;
     padding: 2rem;
 
     color: #fff;
@@ -508,6 +520,8 @@
     &:after {
       bottom: 1.2rem;
       left: 2rem;
+
+      background: #fff;
     }
   }
 
