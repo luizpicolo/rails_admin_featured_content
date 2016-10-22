@@ -4,8 +4,12 @@ require File.expand_path("../dummy/config/environment.rb", __FILE__)
 require 'rspec/rails'
 require 'faker'
 require 'rails_admin_content_builder'
-# require 'rspec/autorun'
 require 'factory_girl_rails'
+require 'codeclimate-test-reporter'
+require 'simplecov'
+
+CodeClimate::TestReporter.start
+SimpleCov.start
 
 Rails.backtrace_cleaner.remove_silencers!
 
