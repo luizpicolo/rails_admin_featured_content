@@ -1,6 +1,7 @@
 # RailsAdminFeaturedContent
 
 [![Gem Version](https://badge.fury.io/rb/rails_admin_content_builder.svg)](https://badge.fury.io/rb/rails_admin_content_builder)
+[![Build Status](https://travis-ci.org/luizpicolo/rails_admin_featured_content.svg?branch=master)](https://travis-ci.org/luizpicolo/rails_admin_featured_content)r
 
 An easy way for creating Featured Content using rails_admin
 
