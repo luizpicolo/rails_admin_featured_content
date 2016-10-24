@@ -1,6 +1,10 @@
 # RailsAdminFeaturedContent
 
 [![Gem Version](https://badge.fury.io/rb/rails_admin_content_builder.svg)](https://badge.fury.io/rb/rails_admin_content_builder)
+[![Code Climate](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/gpa.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content)
+[![Test Coverage](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/coverage.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/coverage)
+[![Issue Count](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/issue_count.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content)
+[![Build Status](https://travis-ci.org/luizpicolo/rails_admin_featured_content.svg?branch=master)](https://travis-ci.org/luizpicolo/rails_admin_featured_content)
 
 An easy way for creating Featured Content using rails_admin
 
@@ -79,7 +83,7 @@ Include this in your controller:
 
 In your show featured content view:
 
-```ruby
+```
 <%= @featured.featured_sanitized %>
 ```
 
@@ -106,7 +110,6 @@ Supported Asset Plugin:
 
     CarrierWave
 
-
 ## TODO
 
  - Tests :)
@@ -120,7 +123,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/luizpicolo/rails_admin_featured_content. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
 
 ## License
 
