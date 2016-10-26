@@ -165,8 +165,8 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
     element += '<div class="fc-row fc-row--flex">';
 
-    for(var i = 0; i < 3; i++) {
-      element += '<section id="'+ section_id +'" class="fc-item fc-item--three fc-item--border">';
+    for(var i = 0; i < 2; i++) {
+      element += '<section id="'+ section_id +'" class="fc-item fc-item--two fc-item--border">';
       element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
       element += '<a href="#" class="fc-link fc-link--absolute"></a>';
       element += '<h2 class="fc-caption"></h2>';
@@ -209,8 +209,52 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 
     element += '<div class="fc-row fc-row--flex">';
 
-    for(var i = 0; i < 2; i++) {
-      element += '<section id="'+ section_id +'" class="fc-item fc-item--two fc-item--border">';
+    for(var i = 0; i < 3; i++) {
+      element += '<section id="'+ section_id +'" class="fc-item fc-item--three fc-item--border">';
+      element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+      element += '<a href="#" class="fc-link fc-link--absolute"></a>';
+      element += '<h2 class="fc-caption"></h2>';
+      element += '<figure class="fc-figure fc-figure--block fc-figure--large">';
+      element += '<img class="fc-image" src="<%= image_url('cb-image-default.jpg') %>">';
+      element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+      element += '<div class="fc-tools fc-tools--center">';
+      element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+      element += '</div>';
+      element += '</figure>';
+      element += '<h1 class="fc-title fc-title--small"></h1>';
+      element += '<p class="fc-text"></p>';
+      element += '</section>';
+
+      sections.push(section_id);
+      section_id = generateID();
+    }
+
+    element += '</div>';
+    element += '</div>';
+
+    container.append(element);
+
+    for(var i = 0; i < sections.length; i++) {
+      autocomplete(sections[i]);
+      addEventToInputFile(sections[i]);
+    }
+
+    scrollTo(row_id);
+    break;
+
+    case '6':
+    var sections = [];
+
+    var element = '<div id="'+ row_id +'" class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
+    element += '</div>';
+
+    element += '<div class="fc-row fc-row--flex">';
+
+    for(var i = 0; i < 4; i++) {
+      element += '<section id="'+ section_id +'" class="fc-item fc-item--four fc-item--border">';
       element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
       element += '<a href="#" class="fc-link fc-link--absolute"></a>';
       element += '<h2 class="fc-caption"></h2>';
@@ -249,25 +293,29 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
 // slide active
  function slideActive(container) {
   if(container) {
-    container.owlCarousel({
-      singleItem: true,
-      slideSpeed: 500,
-      autoPlay: false,
-      stopOnHover: true,
-      paginationSpeed: 500,
-      rewindSpeed: 1000,
-      navigation: true,
-      touchDrag: false,
-      mouseDrag: false,
-      navigationText: ['&lsaquo;','&rsaquo;']
-    });
+    for(var i = 0; i < container.length; i++) {
+      $(container[i]).owlCarousel({
+        singleItem: true,
+        slideSpeed: 500,
+        autoPlay: false,
+        stopOnHover: true,
+        paginationSpeed: 500,
+        rewindSpeed: 1000,
+        navigation: true,
+        touchDrag: false,
+        mouseDrag: false,
+        navigationText: ['&lsaquo;','&rsaquo;']
+      });
+    }
   }
 };
 
 // slide destroy
 function slideDestroy(container) {
   if(container.length) {
-    container.data('owlCarousel').destroy();
+    for(var i = 0; i < container.length; i++) {
+      $(container[i]).data('owlCarousel').destroy();
+    }
   }
 }
 
@@ -330,6 +378,7 @@ function addEventToInputFile(id) {
 // upload file via ajax
 function fileSelectAndUpload(evt) {
   var file = evt.target.files[0];
+  var container = $('#' + evt.target.id);
 
   if(file) {
     var formData = new FormData();
@@ -343,15 +392,15 @@ function fileSelectAndUpload(evt) {
       processData: false,
       type: 'PUT',
       beforeSend: function() {
-        $('#' + evt.target.id).find('figure').append('<div class="fc-loading"></div>');
-        $('.fc-tools--center').addClass('fc-tools--disabled');
+        container.find('figure').append('<div class="fc-loading"></div>');
+        container.find($('.fc-tools--center')).addClass('fc-tools--disabled');
       },
       complete: function(){
         $('.fc-loading').remove();
         $('.fc-tools--center').removeClass('fc-tools--disabled');
       }
     }).done(function(e) {
-      $('#' + evt.target.id).find('img').attr('src', e.image.thumb.url);
+      container.find('img').attr('src', e.image.thumb.url);
     }).fail(function(e) {
       alert('error: ' + e);
     });

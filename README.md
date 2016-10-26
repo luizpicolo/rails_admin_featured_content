@@ -1,8 +1,12 @@
 # RailsAdminFeaturedContent
 
 [![Gem Version](https://badge.fury.io/rb/rails_admin_content_builder.svg)](https://badge.fury.io/rb/rails_admin_content_builder)
+[![Code Climate](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/gpa.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content)
+[![Test Coverage](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/coverage.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/coverage)
+[![Issue Count](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/issue_count.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content)
+[![Build Status](https://travis-ci.org/luizpicolo/rails_admin_featured_content.svg?branch=master)](https://travis-ci.org/luizpicolo/rails_admin_featured_content)
 
-Easy way for create featured contents using rails_admin
+An easy way for creating Featured Content using rails_admin
 
 ## Preview
 
@@ -10,30 +14,30 @@ Easy way for create featured contents using rails_admin
 
 ## Important
 
-First make sure that the gem [rails_admin_content_builder](https://github.com/luizpicolo/rails_admin_content_builder) is installed and working properly
+First, make sure that the gem [rails_admin_content_builder](https://github.com/luizpicolo/rails_admin_content_builder) is installed and working properly
 
 ## Installation
 
 **Test with rails < 5 and TurboLink < 5**
 
 Add this line to your application's Gemfile:
-This is a complement to the gem rails_admin_content_builder, only works with dependencies lists in requirements and not alone
+This is a complement to the gem rails_admin_content_builder, only works with dependencies listed in the requirements and not alone.
 
 ```ruby
 gem 'owlcarousel-rails' # For slides
 gem 'rails_admin_featured_content'
 ```
 
-And then execute:
+After the above step, execute:
 
     $ bundle
 
-Run the generator and migrations
+Run the generator and migrations:
 
     rails g rails_admin_featured_content
     rake db:migrate
 
-Add styles in app/assets/stylesheets/application.scss
+Add styles in app/assets/stylesheets/application.scss:
 
 ```ruby
 *= require rails_admin_featured_content
@@ -41,7 +45,7 @@ Add styles in app/assets/stylesheets/application.scss
 *= require owl.theme
 ```
 
-Add Javascript in app/assets/javascripts/application.js
+Add Javascript in app/assets/javascripts/application.js:
 
 ```ruby
 //= require owl.carousel
@@ -63,7 +67,7 @@ $(document).ready(function() {
 
 ```
 
-And, add in view/layouts/application.html.erb (optional)
+Also, add in view/layouts/application.html.erb (optional):
 
 ```html
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all">
@@ -71,15 +75,15 @@ And, add in view/layouts/application.html.erb (optional)
 
 ## Usage
 
-Include in your controller
+Include this in your controller:
 
 ```ruby
 @featured = RailsAdminFeaturedContent::FeaturedContent.where(status: true).first
 ```
 
-In your show featured content view
+In your show featured content view:
 
-```ruby
+```
 <%= @featured.featured_sanitized %>
 ```
 
@@ -92,20 +96,19 @@ Rails Admin:
 
 ## Requirements
 
-Dependencies
+Dependencies:
 
     MiniMagick
     Rails_admin
     Rails_admin_content_builder
 
-Supported ORM
+Supported ORM:
 
     ActiveRecord
 
-Supported Asset Plugin
+Supported Asset Plugin:
 
     CarrierWave
-
 
 ## TODO
 
@@ -113,14 +116,13 @@ Supported Asset Plugin
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, execute `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/luizpicolo/rails_admin_featured_content. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
 
 ## License
 

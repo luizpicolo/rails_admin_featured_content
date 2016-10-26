@@ -4,32 +4,54 @@
 <div class="fc-snippet">
   <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '1'} do %>
     <%= image_tag 'fc-snippet-highlight.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.targe') %>
+    </span>
   <% end %>
 
   <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '2'} do %>
     <%= image_tag 'fc-snippet-text.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.title_large') %>
+    </span>
   <% end %>
 
   <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '3'} do %>
     <%= image_tag 'fc-snippet-slide.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.slide') %>
+    </span>
   <% end %>
 
   <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '4'} do %>
-    <%= image_tag 'fc-snippet-three.jpg', class: 'fc-snippet__image' %>
+    <%= image_tag 'fc-snippet-two.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.list_two') %>
+    </span>
   <% end %>
 
   <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '5'} do %>
-    <%= image_tag 'fc-snippet-two.jpg', class: 'fc-snippet__image' %>
+    <%= image_tag 'fc-snippet-three.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.list_three') %>
+    </span>
+  <% end %>
+
+  <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '6'} do %>
+    <%= image_tag 'fc-snippet-four.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.list_four') %>
+    </span>
   <% end %>
 </div>
 
 <%= simple_form_for rails_admin.featured_content_url(@abstract_model.to_param, id: @object.id), html: { class: 'fc-form' }, remote: false do |f| %>
   <div class="fc-controls">
-    <%= f.button :submit, "Salvar", name: 'save', class: 'btn btn-block btn-primary' %>
+    <%= f.button :submit, "Salvar", name: 'save', class: 'btn btn-block btn-primary btn-right' %>
     <% if @object.status %>
-      <%= f.button :submit, "Despublicar", name: 'unpublish', class: 'btn btn-block btn-danger' %>
+      <%= f.button :submit, "Despublicar", name: 'unpublish', class: 'btn btn-block btn-danger btn-left' %>
     <% else %>
-      <%= f.button :submit, "Publicar", name: 'publish', class: 'btn btn-block btn-success' %>
+      <%= f.button :submit, "Publicar", name: 'publish', class: 'btn btn-block btn-success btn-left' %>
     <% end %>
   </div>
 

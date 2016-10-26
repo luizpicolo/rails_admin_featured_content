@@ -12,5 +12,8 @@
 /spec/dummy/tmp/*
 spec/dummy/log/test.log
 spec/dummy/db/test.sqlite3
+spec/dummy/db/development.sqlite3
 spec/dummy/log/development.log
+spec/dummy/public/uploads/rails_admin_featured_content/*
+spec/dummy/public/uploads/tmp/*
 *.gem
