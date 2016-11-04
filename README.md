@@ -1,4 +1,4 @@
-# RailsAdminFeaturedContent
+# Rails Admin Featured Content
 
 [![Gem Version](https://badge.fury.io/rb/rails_admin_content_builder.svg)](https://badge.fury.io/rb/rails_admin_content_builder)
 [![Code Climate](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/gpa.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content)
@@ -6,15 +6,20 @@
 [![Issue Count](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content/badges/issue_count.svg)](https://codeclimate.com/github/luizpicolo/rails_admin_featured_content)
 [![Build Status](https://travis-ci.org/luizpicolo/rails_admin_featured_content.svg?branch=master)](https://travis-ci.org/luizpicolo/rails_admin_featured_content)
 
-An easy way for creating Featured Content using rails_admin
+An easy way for creating Featured Content using [rails_admin](https://github.com/sferik/rails_admin).
 
 ## Preview
 
-![preview](https://raw.githubusercontent.com/luizpicolo/rails_admin_featured_content/master/screenshots/image-1.png)
+![featured-min](https://cloud.githubusercontent.com/assets/2979365/20011773/7b5a7544-a28b-11e6-950c-3b47f4556b98.jpg)
+
+### Demonstration
+
+[Featured Content](https://example-cb-fc.herokuapp.com/admin/rails_admin_featured_content~featured_content/4/featured_content)   
+[Featured generated](https://example-cb-fc.herokuapp.com/)
 
 ## Important
 
-First, make sure that the gem [rails_admin_content_builder](https://github.com/luizpicolo/rails_admin_content_builder) is installed and working properly
+First, make sure that the gem [rails_admin_content_builder](https://github.com/luizpicolo/rails_admin_content_builder) is installed and working properly.
 
 ## Installation
 
@@ -86,13 +91,6 @@ In your show featured content view:
 ```
 <%= @featured.featured_sanitized %>
 ```
-
-# Demonstration
-
-Featured Content:
-[link](https://example-cb-fc.herokuapp.com/)    
-Rails Admin:
-[link](https://example-cb-fc.herokuapp.com/admin/rails_admin_featured_content~featured_content/1/featured_content)
 
 ## Requirements
 
