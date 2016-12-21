@@ -2,9 +2,9 @@ en:
   admin:
     actions:
       featured_content:
-        title: "Create News"
-        menu: "Create New"
-        breadcrumb: "Create New"
+        title: "Create Featured Content"
+        menu: "Create Featured Content"
+        breadcrumb: "Create Featured Content"
         delete_block: "Do you want to remove this content?"
         success_save: "Successfully updated"
         error_save: "Error updating"
