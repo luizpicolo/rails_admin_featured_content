@@ -43,6 +43,13 @@
       <%= t('admin.actions.featured_content.snippet.list_four') %>
     </span>
   <% end %>
+
+  <%= link_to '#', class: 'fc-snippet__btn', data: {snippet: '7'} do %>
+    <%= image_tag 'fc-snippet-two.jpg', class: 'fc-snippet__image' %>
+    <span class="fc-snippet__caption">
+      <%= t('admin.actions.featured_content.snippet.list_float_two') %>
+    </span>
+  <% end %>
 </div>
 
 <%= simple_form_for rails_admin.featured_content_url(@abstract_model.to_param, id: @object.id), html: { class: 'fc-form' }, remote: false do |f| %>
