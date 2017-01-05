@@ -163,6 +163,42 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
     element += '</div>';
 
+    element += '<div class="fc-row">';
+
+    element += '<section id="'+ section_id +'" class="fc-item fc-item--border">';
+    element += '<input class="fc-search" type="text" name="search" placeholder="Buscar notícia">';
+    element += '<a href="#" class="fc-link fc-link--absolute"></a>';
+    element += '<h2 class="fc-caption"></h2>';
+    element += '<figure class="fc-figure fc-figure--block fc-figure--large">';
+    element += '<img class="fc-image" src="<%= image_url('cb-image-default.jpg') %>">';
+    element += '<input class="fc-tools__input fc-tools__input--upload" type="file" name="image" id="'+ section_id +'">';
+    element += '<div class="fc-tools fc-tools--center">';
+    element += '<a class="fc-tools__btn fc-tools__btn--upload fa fa-camera" href="#'+ section_id + '"></a>';
+    element += '</div>';
+    element += '</figure>';
+    element += '<h1 class="fc-title fc-title--small"></h1>';
+    element += '<p class="fc-text"></p>';
+    element += '</section>';
+
+    element += '</div>';
+    element += '</div>';
+
+    container.append(element);
+
+    autocomplete(section_id);
+    addEventToInputFile(section_id);
+    scrollTo(row_id);
+    break;
+
+    case '5':
+    var sections = [];
+
+    var element = '<div id="'+ row_id +'" class="fc-row">';
+    element += '<div class="fc-tools">';
+    element += '<a class="fc-tools__btn fc-tools__btn--move fa fa-arrows" href="#"></a>';
+    element += '<a class="fc-tools__btn fc-tools__btn--delete fa fa-trash" href="#'+ row_id +'"></a>';
+    element += '</div>';
+
     element += '<div class="fc-row fc-row--flex">';
 
     for(var i = 0; i < 2; i++) {
@@ -198,7 +234,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '5':
+    case '6':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
@@ -242,7 +278,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '6':
+    case '7':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
@@ -286,7 +322,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '7':
+    case '8':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
@@ -322,7 +358,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '8':
+    case '9':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
@@ -366,7 +402,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '9':
+    case '10':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
@@ -410,7 +446,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '10':
+    case '11':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
@@ -439,7 +475,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '11':
+    case '12':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
@@ -476,7 +512,7 @@ $(document).on('click', '.fc-snippet__btn', function(e) {
     scrollTo(row_id);
     break;
 
-    case '12':
+    case '13':
     var sections = [];
 
     var element = '<div id="'+ row_id +'" class="fc-row">';
