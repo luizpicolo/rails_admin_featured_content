@@ -405,6 +405,7 @@
 .fc-slide__text {
   margin: .5em 0 0;
 
+  display: block;
   line-height: 1.4;
   max-height: 2.8em;
 
@@ -576,6 +577,7 @@
 
   .fc-slide__text {
     max-height: none;
+    
     color: rgba(#fff, .8);
     font-size: 1.2em;
     text-shadow: 1px 1px 0 rgba(0,0,0,.6);
