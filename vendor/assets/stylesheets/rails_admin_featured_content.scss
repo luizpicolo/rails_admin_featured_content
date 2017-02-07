@@ -16,13 +16,13 @@
 }
 
 .fc-date {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 
   color: rgba(#000, .4);
   font-size: .7em;
 
   line-height: 1;
-  padding-bottom: 1em;
+  padding-bottom: 1rem;
   border-bottom: solid 1px rgba(#111, .1);
 }
 
@@ -40,8 +40,8 @@
 }
 
 .fc-item--border {
-  margin-bottom: 1em;
-  padding-bottom: 1em;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 
   border-bottom: solid 1px rgba(#111, .1);
 }
@@ -76,7 +76,7 @@
 
   display: block;
   width: 100%;
-  height: calc(100% - 1em);
+  height: calc(100% - 1rem);
 
   &:hover,
   &:focus {
@@ -124,13 +124,13 @@
 
 .fc-time--block {
   float: none;
-  margin-bottom: .4em;
+  margin-bottom: .5rem;
 
   display: block;
 }
 
 .fc-caption {
-  margin: 0 0 .5em;
+  margin: 0 0 .5rem;
 
   line-height: 1;
 
@@ -142,7 +142,7 @@
 }
 
 .fc-title {
-  margin: 0 0 .5em;
+  margin: 0;
 
   line-height: 1.3;
 
@@ -155,7 +155,7 @@
 .fc-title--highlight {
   margin: 0;
 
-  padding: .6em;
+  padding: .6rem .6rem .6em;
   background: #222;
   border-radius: 4px;
 
@@ -164,9 +164,8 @@
 }
 
 .fc-text {
-  margin: 0;
-
-  display: inline;
+  margin: .5rem 0 0;
+  
   line-height: 1.4;
   overflow: hidden;
 
@@ -178,7 +177,8 @@
 @media screen and (min-width: 460px) {
   .fc-figure {
     float: left;
-    margin: 0 1em 0 0;
+    margin: 0 1rem 0 0;
+
     width: 150px;
     height: 100px;
   }
@@ -205,8 +205,8 @@
   }
 
   .fc-item--border {
-    margin-bottom: 1.5em;
-    padding-bottom: 1.5em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .fc-item--two {
@@ -255,13 +255,13 @@
   }
 
   .fc-link--absolute {
-    height: calc(100% - 1.5em);
+    height: calc(100% - 1.5rem);
   }
 
   .fc-date {
     font-size: .9em;
-    margin-bottom: 1.5em;
-    padding-bottom: 1.5em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .fc-date--small {
@@ -300,13 +300,13 @@
 
   .fc-title--highlight {
     font-size: 1.1em;
-    padding: .6em .9em .7em;
+    padding: .6rem .9rem .7em;
   }
 
   .fc-figure--block {
     position: relative;
     float: none;
-    margin: 0 1em .5em 0;
+    margin: 0 1rem .5rem 0;
 
     width: 100%;
     height: 0;
@@ -403,7 +403,7 @@
 }
 
 .fc-slide__text {
-  margin: .5em 0 0;
+  margin: .5rem 0 0;
 
   display: block;
   line-height: 1.4;
@@ -446,7 +446,7 @@
 .fc-slide__figure {
   position: relative;
   z-index: -1;
-  margin: 0 0 .5em;
+  margin: 0 0 .5rem;
 
   width: 100%;
   height: 0;
